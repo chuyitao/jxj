@@ -7,7 +7,7 @@ DROP DATABASE IF EXISTS `zzyl`;
 ####################
 ##  database zzyl ddl
 ####################
-CREATE DATABASE `zzyl` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_eo_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE "zzyl" /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_eo_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 use `zzyl`;
 
@@ -19,19 +19,19 @@ DROP TABLE IF EXISTS `bed`;
 ####################
 ##  table bed ddl
 ####################
-CREATE TABLE `bed` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '床位ID',
-  `bed_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
-  `bed_status` int DEFAULT NULL COMMENT '床位状态: 未入住0, 已入住1 ',
-  `sort` int DEFAULT NULL COMMENT '床位号',
-  `room_id` bigint DEFAULT NULL COMMENT '房间ID',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `bed_number` (`bed_number`) USING BTREE
+CREATE TABLE "bed" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '床位ID',
+  "bed_number" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
+  "bed_status" int DEFAULT NULL COMMENT '床位状态: 未入住0, 已入住1 ',
+  "sort" int DEFAULT NULL COMMENT '床位号',
+  "room_id" bigint DEFAULT NULL COMMENT '房间ID',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "bed_number" ("bed_number") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='床位表';
 
 ####################
@@ -134,23 +134,23 @@ DROP TABLE IF EXISTS `check_in`;
 ####################
 ##  table check_in ddl
 ####################
-CREATE TABLE `check_in` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `elder_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '老人姓名',
-  `elder_id` bigint NOT NULL COMMENT '老人ID',
-  `id_card_no` char(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '身份证号',
-  `start_date` date NOT NULL COMMENT '入住开始时间',
-  `end_date` date DEFAULT NULL COMMENT '入住结束时间',
-  `nursing_level_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '护理等级名称',
-  `bed_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '入住床位',
-  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态 (0: 已入住, 1: 已退住)',
-  `sort_order` int NOT NULL DEFAULT '0' COMMENT '排序编号',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
+CREATE TABLE "check_in" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "elder_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '老人姓名',
+  "elder_id" bigint NOT NULL COMMENT '老人ID',
+  "id_card_no" char(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '身份证号',
+  "start_date" date NOT NULL COMMENT '入住开始时间',
+  "end_date" date DEFAULT NULL COMMENT '入住结束时间',
+  "nursing_level_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '护理等级名称',
+  "bed_number" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '入住床位',
+  "status" tinyint NOT NULL DEFAULT '0' COMMENT '状态 (0: 已入住, 1: 已退住)',
+  "sort_order" int NOT NULL DEFAULT '0' COMMENT '排序编号',
+  "create_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "update_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  "create_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
+  "update_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ####################
@@ -172,26 +172,26 @@ DROP TABLE IF EXISTS `check_in_config`;
 ####################
 ##  table check_in_config ddl
 ####################
-CREATE TABLE `check_in_config` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `check_in_id` bigint NOT NULL COMMENT '入住表ID',
-  `nursing_level_id` bigint NOT NULL COMMENT '护理等级ID',
-  `nursing_level_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '护理等级名称',
-  `fee_start_date` date NOT NULL COMMENT '费用开始时间',
-  `fee_end_date` date DEFAULT NULL COMMENT '费用结束时间',
-  `deposit` decimal(10,2) NOT NULL COMMENT '押金（元）',
-  `nursing_fee` decimal(10,2) NOT NULL COMMENT '护理费用（元/月）',
-  `bed_fee` decimal(10,2) NOT NULL COMMENT '床位费用（元/月）',
-  `insurance_payment` decimal(10,2) NOT NULL COMMENT '医保支付（元/月）',
-  `government_subsidy` decimal(10,2) NOT NULL COMMENT '政府补贴（元/月）',
-  `other_fees` decimal(10,2) NOT NULL COMMENT '其他费用（元/月）',
-  `sort_order` int NOT NULL DEFAULT '0' COMMENT '排序编号',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
+CREATE TABLE "check_in_config" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "check_in_id" bigint NOT NULL COMMENT '入住表ID',
+  "nursing_level_id" bigint NOT NULL COMMENT '护理等级ID',
+  "nursing_level_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '护理等级名称',
+  "fee_start_date" date NOT NULL COMMENT '费用开始时间',
+  "fee_end_date" date DEFAULT NULL COMMENT '费用结束时间',
+  "deposit" decimal(10,2) NOT NULL COMMENT '押金（元）',
+  "nursing_fee" decimal(10,2) NOT NULL COMMENT '护理费用（元/月）',
+  "bed_fee" decimal(10,2) NOT NULL COMMENT '床位费用（元/月）',
+  "insurance_payment" decimal(10,2) NOT NULL COMMENT '医保支付（元/月）',
+  "government_subsidy" decimal(10,2) NOT NULL COMMENT '政府补贴（元/月）',
+  "other_fees" decimal(10,2) NOT NULL COMMENT '其他费用（元/月）',
+  "sort_order" int NOT NULL DEFAULT '0' COMMENT '排序编号',
+  "create_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "update_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  "create_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
+  "update_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ####################
@@ -213,29 +213,29 @@ DROP TABLE IF EXISTS `contract`;
 ####################
 ##  table contract ddl
 ####################
-CREATE TABLE `contract` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `elder_id` int NOT NULL COMMENT '老人ID',
-  `contract_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '合同名称',
-  `contract_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '合同编号',
-  `agreement_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '协议地址（文件路径或URL）',
-  `third_party_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '丙方手机号',
-  `third_party_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '丙方姓名',
-  `elder_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '老人姓名',
-  `start_date` date NOT NULL COMMENT '开始时间',
-  `end_date` date NOT NULL COMMENT '结束时间',
-  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态 (0: 未生效, 1: 已生效, 2: 已过期, 3: 已失效)',
-  `sign_date` date NOT NULL COMMENT '签约日期',
-  `termination_submitter` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '解除提交人',
-  `termination_date` date DEFAULT NULL COMMENT '解除日期',
-  `termination_agreement_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '解除协议地址（文件路径或URL）',
-  `sort_order` int NOT NULL DEFAULT '0' COMMENT '排序编号',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
+CREATE TABLE "contract" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "elder_id" int NOT NULL COMMENT '老人ID',
+  "contract_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '合同名称',
+  "contract_number" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '合同编号',
+  "agreement_path" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '协议地址（文件路径或URL）',
+  "third_party_phone" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '丙方手机号',
+  "third_party_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '丙方姓名',
+  "elder_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '老人姓名',
+  "start_date" date NOT NULL COMMENT '开始时间',
+  "end_date" date NOT NULL COMMENT '结束时间',
+  "status" tinyint NOT NULL DEFAULT '0' COMMENT '状态 (0: 未生效, 1: 已生效, 2: 已过期, 3: 已失效)',
+  "sign_date" date NOT NULL COMMENT '签约日期',
+  "termination_submitter" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '解除提交人',
+  "termination_date" date DEFAULT NULL COMMENT '解除日期',
+  "termination_agreement_path" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '解除协议地址（文件路径或URL）',
+  "sort_order" int NOT NULL DEFAULT '0' COMMENT '排序编号',
+  "create_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "update_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  "create_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '创建人',
+  "update_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '修改人',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ####################
@@ -257,27 +257,27 @@ DROP TABLE IF EXISTS `elder`;
 ####################
 ##  table elder ddl
 ####################
-CREATE TABLE `elder` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片',
-  `id_card_no` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证号',
-  `sex` int DEFAULT NULL COMMENT '性别（0:女  1:男）',
-  `status` int NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1:启用  2:请假 3:退住中 4入住中 5已退住）',
-  `phone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '手机号',
-  `birthday` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出生日期',
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '家庭住址',
-  `id_card_national_emblem_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证国徽面',
-  `id_card_portrait_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证人像面',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  `bed_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
-  `bed_id` bigint DEFAULT NULL COMMENT '床位id',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name_id_card_no` (`name`,`id_card_no`) USING BTREE
+CREATE TABLE "elder" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  "name" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+  "image" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片',
+  "id_card_no" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证号',
+  "sex" int DEFAULT NULL COMMENT '性别（0:女  1:男）',
+  "status" int NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1:启用  2:请假 3:退住中 4入住中 5已退住）',
+  "phone" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '手机号',
+  "birthday" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '出生日期',
+  "address" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '家庭住址',
+  "id_card_national_emblem_img" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证国徽面',
+  "id_card_portrait_img" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '身份证人像面',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  "bed_number" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
+  "bed_id" bigint DEFAULT NULL COMMENT '床位id',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name_id_card_no" ("name","id_card_no") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='老人表';
 
 ####################
@@ -299,20 +299,20 @@ DROP TABLE IF EXISTS `family_member`;
 ####################
 ##  table family_member ddl
 ####################
-CREATE TABLE `family_member` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '手机号',
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '名称',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '头像',
-  `open_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'OpenID',
-  `gender` int DEFAULT NULL COMMENT '性别(0:男，1:女)',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='老人家属';
+CREATE TABLE "family_member" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  "phone" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '手机号',
+  "name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '名称',
+  "avatar" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '头像',
+  "open_id" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'OpenID',
+  "gender" int DEFAULT NULL COMMENT '性别(0:男，1:女)',
+  "create_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "update_time" timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='老人家属';
 
 ####################
 ##  family_member data
@@ -321,6 +321,7 @@ CREATE TABLE `family_member` (
 ####################
 ##  family_member data
 ####################
+INSERT INTO `family_member`(`update_time`,`create_time`,`phone`,`open_id`,`name`,`id`) VALUES ('2025-10-15 22:39:23.0','2025-10-15 22:39:23.0','18511478915','o3CsK6_C6f4WP9b0AxXNJOkc6q9Q','大桔大利8915',7);
 
 ####################
 ##  family_member_elder
@@ -330,17 +331,17 @@ DROP TABLE IF EXISTS `family_member_elder`;
 ####################
 ##  table family_member_elder ddl
 ####################
-CREATE TABLE `family_member_elder` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `family_member_id` bigint DEFAULT NULL COMMENT '家属id',
-  `elder_id` bigint DEFAULT NULL COMMENT '老人id',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `member_id_elder_id` (`family_member_id`,`elder_id`) USING BTREE
+CREATE TABLE "family_member_elder" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  "family_member_id" bigint DEFAULT NULL COMMENT '家属id',
+  "elder_id" bigint DEFAULT NULL COMMENT '老人id',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "member_id_elder_id" ("family_member_id","elder_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='客户老人关联表';
 
 ####################
@@ -359,17 +360,17 @@ DROP TABLE IF EXISTS `floor`;
 ####################
 ##  table floor ddl
 ####################
-CREATE TABLE `floor` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
-  `code` bigint DEFAULT NULL COMMENT '编号',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name` (`name`) USING BTREE
+CREATE TABLE "floor" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  "name" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
+  "code" bigint DEFAULT NULL COMMENT '编号',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name" ("name") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=413 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='楼层表';
 
 ####################
@@ -399,29 +400,29 @@ DROP TABLE IF EXISTS `gen_table`;
 ####################
 ##  table gen_table ddl
 ####################
-CREATE TABLE `gen_table` (
-  `table_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `table_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '表名称',
-  `table_comment` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '表描述',
-  `sub_table_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '关联子表的表名',
-  `sub_table_fk_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '子表关联的外键名',
-  `class_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '实体类名称',
-  `tpl_category` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'crud' COMMENT '使用的模板（crud单表操作 tree树表操作）',
-  `tpl_web_type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '前端模板类型（element-ui模版 element-plus模版）',
-  `package_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成包路径',
-  `module_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成模块名',
-  `business_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成业务名',
-  `function_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成功能名',
-  `function_author` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成功能作者',
-  `gen_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '生成代码方式（0zip压缩包 1自定义路径）',
-  `gen_path` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '/' COMMENT '生成路径（不填默认项目路径）',
-  `options` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '其它生成选项',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`table_id`) USING BTREE
+CREATE TABLE "gen_table" (
+  "table_id" bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  "table_name" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '表名称',
+  "table_comment" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '表描述',
+  "sub_table_name" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '关联子表的表名',
+  "sub_table_fk_name" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '子表关联的外键名',
+  "class_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '实体类名称',
+  "tpl_category" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'crud' COMMENT '使用的模板（crud单表操作 tree树表操作）',
+  "tpl_web_type" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '前端模板类型（element-ui模版 element-plus模版）',
+  "package_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成包路径',
+  "module_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成模块名',
+  "business_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成业务名',
+  "function_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成功能名',
+  "function_author" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '生成功能作者',
+  "gen_type" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '生成代码方式（0zip压缩包 1自定义路径）',
+  "gen_path" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '/' COMMENT '生成路径（不填默认项目路径）',
+  "options" varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '其它生成选项',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("table_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='代码生成业务表';
 
 ####################
@@ -448,30 +449,30 @@ DROP TABLE IF EXISTS `gen_table_column`;
 ####################
 ##  table gen_table_column ddl
 ####################
-CREATE TABLE `gen_table_column` (
-  `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `table_id` bigint DEFAULT NULL COMMENT '归属表编号',
-  `column_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列名称',
-  `column_comment` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列描述',
-  `column_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列类型',
-  `java_type` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'JAVA类型',
-  `java_field` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'JAVA字段名',
-  `is_pk` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否主键（1是）',
-  `is_increment` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否自增（1是）',
-  `is_required` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否必填（1是）',
-  `is_insert` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否为插入字段（1是）',
-  `is_edit` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否编辑字段（1是）',
-  `is_list` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否列表字段（1是）',
-  `is_query` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否查询字段（1是）',
-  `query_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'EQ' COMMENT '查询方式（等于、不等于、大于、小于、范围）',
-  `html_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '显示类型（文本框、文本域、下拉框、复选框、单选框、日期控件）',
-  `dict_type` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
-  `sort` int DEFAULT NULL COMMENT '排序',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`column_id`) USING BTREE
+CREATE TABLE "gen_table_column" (
+  "column_id" bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  "table_id" bigint DEFAULT NULL COMMENT '归属表编号',
+  "column_name" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列名称',
+  "column_comment" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列描述',
+  "column_type" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '列类型',
+  "java_type" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'JAVA类型',
+  "java_field" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'JAVA字段名',
+  "is_pk" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否主键（1是）',
+  "is_increment" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否自增（1是）',
+  "is_required" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否必填（1是）',
+  "is_insert" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否为插入字段（1是）',
+  "is_edit" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否编辑字段（1是）',
+  "is_list" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否列表字段（1是）',
+  "is_query" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '是否查询字段（1是）',
+  "query_type" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'EQ' COMMENT '查询方式（等于、不等于、大于、小于、范围）',
+  "html_type" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '显示类型（文本框、文本域、下拉框、复选框、单选框、日期控件）',
+  "dict_type" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
+  "sort" int DEFAULT NULL COMMENT '排序',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY ("column_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=494 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='代码生成业务表字段';
 
 ####################
@@ -630,22 +631,22 @@ DROP TABLE IF EXISTS `health_assessment`;
 ####################
 ##  table health_assessment ddl
 ####################
-CREATE TABLE `health_assessment` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `elder_name` varchar(255) DEFAULT NULL COMMENT '老人姓名',
-  `id_card` varchar(255) DEFAULT NULL COMMENT '身份证号',
-  `health_score` varchar(255) DEFAULT NULL COMMENT '健康评分',
-  `suggestion_for_admission` int DEFAULT NULL COMMENT '是否建议入住(0:建议，1:不建议)',
-  `nursing_level_name` varchar(255) DEFAULT NULL COMMENT '推荐护理等级',
-  `admission_status` int DEFAULT NULL COMMENT '入住情况(0:已入住，1:未入住)',
-  `total_check_date` varchar(64) DEFAULT NULL COMMENT '总检日期',
-  `assessment_time` datetime DEFAULT NULL COMMENT '评估时间',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` text COMMENT '备注',
-  PRIMARY KEY (`id`)
+CREATE TABLE "health_assessment" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  "elder_name" varchar(255) DEFAULT NULL COMMENT '老人姓名',
+  "id_card" varchar(255) DEFAULT NULL COMMENT '身份证号',
+  "health_score" varchar(255) DEFAULT NULL COMMENT '健康评分',
+  "suggestion_for_admission" int DEFAULT NULL COMMENT '是否建议入住(0:建议，1:不建议)',
+  "nursing_level_name" varchar(255) DEFAULT NULL COMMENT '推荐护理等级',
+  "admission_status" int DEFAULT NULL COMMENT '入住情况(0:已入住，1:未入住)',
+  "total_check_date" varchar(64) DEFAULT NULL COMMENT '总检日期',
+  "assessment_time" datetime DEFAULT NULL COMMENT '评估时间',
+  "create_by" varchar(255) DEFAULT NULL COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(255) DEFAULT NULL COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" text COMMENT '备注',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='健康评估表';
 
 ####################
@@ -665,24 +666,24 @@ DROP TABLE IF EXISTS `health_assessment_detail`;
 ####################
 ##  table health_assessment_detail ddl
 ####################
-CREATE TABLE `health_assessment_detail` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `health_assessment_id` bigint NOT NULL COMMENT '健康评估id',
-  `birth_date` datetime DEFAULT NULL COMMENT '出生日期',
-  `age` int DEFAULT NULL COMMENT '年龄',
-  `gender` int DEFAULT NULL COMMENT '性别(0:男，1:女)',
-  `risk_level` varchar(255) DEFAULT NULL COMMENT '严重危险(健康, 提示, 风险, 危险, 严重危险)',
-  `physical_exam_institution` varchar(255) DEFAULT NULL COMMENT '体检机构',
-  `physical_report_url` varchar(255) DEFAULT NULL COMMENT '体检报告URL链接',
-  `report_summary` text COMMENT '报告总结',
-  `abnormal_analysis` text COMMENT '异常分析',
-  `system_score` varchar(255) DEFAULT NULL COMMENT '健康系统分值',
-  `create_by` varchar(255) DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(255) DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` text COMMENT '备注',
-  PRIMARY KEY (`id`)
+CREATE TABLE "health_assessment_detail" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  "health_assessment_id" bigint NOT NULL COMMENT '健康评估id',
+  "birth_date" datetime DEFAULT NULL COMMENT '出生日期',
+  "age" int DEFAULT NULL COMMENT '年龄',
+  "gender" int DEFAULT NULL COMMENT '性别(0:男，1:女)',
+  "risk_level" varchar(255) DEFAULT NULL COMMENT '严重危险(健康, 提示, 风险, 危险, 严重危险)',
+  "physical_exam_institution" varchar(255) DEFAULT NULL COMMENT '体检机构',
+  "physical_report_url" varchar(255) DEFAULT NULL COMMENT '体检报告URL链接',
+  "report_summary" text COMMENT '报告总结',
+  "abnormal_analysis" text COMMENT '异常分析',
+  "system_score" varchar(255) DEFAULT NULL COMMENT '健康系统分值',
+  "create_by" varchar(255) DEFAULT NULL COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(255) DEFAULT NULL COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" text COMMENT '备注',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='健康评估详情表';
 
 ####################
@@ -702,17 +703,17 @@ DROP TABLE IF EXISTS `nursing_elder`;
 ####################
 ##  table nursing_elder ddl
 ####################
-CREATE TABLE `nursing_elder` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `nursing_id` bigint DEFAULT NULL COMMENT '护理员id',
-  `elder_id` bigint DEFAULT NULL COMMENT '老人id',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `nursing_id` (`nursing_id`,`elder_id`) USING BTREE
+CREATE TABLE "nursing_elder" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  "nursing_id" bigint DEFAULT NULL COMMENT '护理员id',
+  "elder_id" bigint DEFAULT NULL COMMENT '老人id',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "nursing_id" ("nursing_id","elder_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理员老人关联表';
 
 ####################
@@ -736,20 +737,20 @@ DROP TABLE IF EXISTS `nursing_level`;
 ####################
 ##  table nursing_level ddl
 ####################
-CREATE TABLE `nursing_level` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '等级名称',
-  `plan_id` int NOT NULL COMMENT '护理计划ID',
-  `fee` decimal(10,2) NOT NULL COMMENT '护理费用',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1：启用）',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '等级说明',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name` (`name`) USING BTREE
+CREATE TABLE "nursing_level" (
+  "id" int NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '等级名称',
+  "plan_id" int NOT NULL COMMENT '护理计划ID',
+  "fee" decimal(10,2) NOT NULL COMMENT '护理费用',
+  "status" tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1：启用）',
+  "description" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '等级说明',
+  "create_time" datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  "update_time" datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name" ("name") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理等级表';
 
 ####################
@@ -771,18 +772,18 @@ DROP TABLE IF EXISTS `nursing_plan`;
 ####################
 ##  table nursing_plan ddl
 ####################
-CREATE TABLE `nursing_plan` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `sort_no` int DEFAULT NULL COMMENT '排序号',
-  `plan_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '名称',
-  `status` tinyint NOT NULL DEFAULT '0' COMMENT '状态 0禁用 1启用',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `plan_name` (`plan_name`) USING BTREE
+CREATE TABLE "nursing_plan" (
+  "id" int NOT NULL AUTO_INCREMENT COMMENT '编号',
+  "sort_no" int DEFAULT NULL COMMENT '排序号',
+  "plan_name" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '名称',
+  "status" tinyint NOT NULL DEFAULT '0' COMMENT '状态 0禁用 1启用',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "plan_name" ("plan_name") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理计划表';
 
 ####################
@@ -806,22 +807,22 @@ DROP TABLE IF EXISTS `nursing_project`;
 ####################
 ##  table nursing_project ddl
 ####################
-CREATE TABLE `nursing_project` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
-  `order_no` int DEFAULT NULL COMMENT '排序号',
-  `unit` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '单位',
-  `price` decimal(10,2) DEFAULT NULL COMMENT '价格',
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片',
-  `nursing_requirement` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '护理要求',
-  `status` int NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1：启用）',
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '更新人',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name` (`name`) USING BTREE
+CREATE TABLE "nursing_project" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  "name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+  "order_no" int DEFAULT NULL COMMENT '排序号',
+  "unit" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '单位',
+  "price" decimal(10,2) DEFAULT NULL COMMENT '价格',
+  "image" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片',
+  "nursing_requirement" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '护理要求',
+  "status" int NOT NULL DEFAULT '1' COMMENT '状态（0：禁用，1：启用）',
+  "create_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
+  "update_by" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '更新人',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  "create_time" datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  "update_time" datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name" ("name") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理项目表';
 
 ####################
@@ -850,19 +851,19 @@ DROP TABLE IF EXISTS `nursing_project_plan`;
 ####################
 ##  table nursing_project_plan ddl
 ####################
-CREATE TABLE `nursing_project_plan` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `plan_id` int NOT NULL COMMENT '计划id',
-  `project_id` int NOT NULL COMMENT '项目id',
-  `execute_time` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '计划执行时间',
-  `execute_cycle` int NOT NULL COMMENT '执行周期 0 天 1 周 2月',
-  `execute_frequency` int NOT NULL COMMENT '执行频次',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+CREATE TABLE "nursing_project_plan" (
+  "id" int NOT NULL AUTO_INCREMENT,
+  "plan_id" int NOT NULL COMMENT '计划id',
+  "project_id" int NOT NULL COMMENT '项目id',
+  "execute_time" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '计划执行时间',
+  "execute_cycle" int NOT NULL COMMENT '执行周期 0 天 1 周 2月',
+  "execute_frequency" int NOT NULL COMMENT '执行频次',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1747 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理计划和项目关联表';
 
 ####################
@@ -892,26 +893,26 @@ DROP TABLE IF EXISTS `nursing_task`;
 ####################
 ##  table nursing_task ddl
 ####################
-CREATE TABLE `nursing_task` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `nursing_id` varchar(50) DEFAULT NULL COMMENT '护理员id',
-  `project_id` int NOT NULL COMMENT '项目id',
-  `project_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '护理项目名称',
-  `elder_id` bigint DEFAULT NULL COMMENT '老人id',
-  `elder_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '老人姓名',
-  `bed_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
-  `estimated_server_time` datetime DEFAULT NULL COMMENT '预计服务时间',
-  `real_server_time` datetime DEFAULT NULL COMMENT '实际服务时间',
-  `mark` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行记录',
-  `cancel_reason` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '取消原因',
-  `status` int DEFAULT NULL COMMENT '状态  1待执行 2已执行 3已关闭 ',
-  `task_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行图片',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+CREATE TABLE "nursing_task" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  "nursing_id" varchar(50) DEFAULT NULL COMMENT '护理员id',
+  "project_id" int NOT NULL COMMENT '项目id',
+  "project_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '护理项目名称',
+  "elder_id" bigint DEFAULT NULL COMMENT '老人id',
+  "elder_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '老人姓名',
+  "bed_number" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '床位编号',
+  "estimated_server_time" datetime DEFAULT NULL COMMENT '预计服务时间',
+  "real_server_time" datetime DEFAULT NULL COMMENT '实际服务时间',
+  "mark" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行记录',
+  "cancel_reason" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '取消原因',
+  "status" int DEFAULT NULL COMMENT '状态  1待执行 2已执行 3已关闭 ',
+  "task_image" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行图片',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='护理任务表';
 
 ####################
@@ -930,22 +931,22 @@ DROP TABLE IF EXISTS `reservation`;
 ####################
 ##  table reservation ddl
 ####################
-CREATE TABLE `reservation` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '预约人姓名',
-  `mobile` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '预约人手机号',
-  `time` datetime NOT NULL COMMENT '预约时间',
-  `visitor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '探访人',
-  `type` int NOT NULL COMMENT '预约类型，0：参观预约，1：探访预约',
-  `status` int NOT NULL COMMENT '预约状态，0：待报道，1：已完成，2：取消，3：过期',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name_mobile_time_visitor` (`mobile`,`time`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='预约信息表';
+CREATE TABLE "reservation" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '预约人姓名',
+  "mobile" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '预约人手机号',
+  "time" datetime NOT NULL COMMENT '预约时间',
+  "visitor" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '探访人',
+  "type" int NOT NULL COMMENT '预约类型，0：参观预约，1：探访预约',
+  "status" int NOT NULL COMMENT '预约状态，0：待报道，1：已完成，2：取消，3：过期',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name_mobile_time_visitor" ("mobile","time") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='预约信息表';
 
 ####################
 ##  reservation data
@@ -954,6 +955,8 @@ CREATE TABLE `reservation` (
 ####################
 ##  reservation data
 ####################
+INSERT INTO `reservation`(`create_by`,`update_time`,`create_time`,`name`,`mobile`,`id`,`time`,`visitor`,`type`,`update_by`,`status`) VALUES (7,'2025-10-15T22:39:51','2025-10-15T22:39:51','张三','13211234564',1,'2025-10-15T08:30','老张',0,7,0);
+INSERT INTO `reservation`(`create_by`,`update_time`,`create_time`,`name`,`mobile`,`id`,`time`,`visitor`,`type`,`update_by`,`status`) VALUES (7,'2025-10-15T22:40:16','2025-10-15T22:40:16','李四','18876651234',2,'2025-10-15T11:00','老李',0,7,0);
 
 ####################
 ##  room
@@ -963,20 +966,20 @@ DROP TABLE IF EXISTS `room`;
 ####################
 ##  table room ddl
 ####################
-CREATE TABLE `room` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '房间编号',
-  `sort` int DEFAULT NULL COMMENT '排序号',
-  `room_type_id` bigint DEFAULT NULL COMMENT '房间类型id',
-  `floor_id` bigint DEFAULT NULL COMMENT '楼层id',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `is_deleted` tinyint(1) DEFAULT '0' COMMENT '是否删除',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `code` (`code`) USING BTREE
+CREATE TABLE "room" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "code" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '房间编号',
+  "sort" int DEFAULT NULL COMMENT '排序号',
+  "room_type_id" bigint DEFAULT NULL COMMENT '房间类型id',
+  "floor_id" bigint DEFAULT NULL COMMENT '楼层id',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "is_deleted" tinyint(1) DEFAULT '0' COMMENT '是否删除',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "code" ("code") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='房间表';
 
 ####################
@@ -1054,21 +1057,21 @@ DROP TABLE IF EXISTS `room_type`;
 ####################
 ##  table room_type ddl
 ####################
-CREATE TABLE `room_type` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '房型名称',
-  `bed_count` int NOT NULL DEFAULT '0' COMMENT '床位数量',
-  `price` decimal(10,2) NOT NULL COMMENT '床位费用',
-  `introduction` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '介绍',
-  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '照片',
-  `status` tinyint NOT NULL COMMENT '状态，0：禁用，1：启用',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `create_by` bigint DEFAULT NULL COMMENT '创建人id',
-  `update_by` bigint DEFAULT NULL COMMENT '更新人id',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `name` (`name`) USING BTREE
+CREATE TABLE "room_type" (
+  "id" bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  "name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '房型名称',
+  "bed_count" int NOT NULL DEFAULT '0' COMMENT '床位数量',
+  "price" decimal(10,2) NOT NULL COMMENT '床位费用',
+  "introduction" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '介绍',
+  "photo" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '照片',
+  "status" tinyint NOT NULL COMMENT '状态，0：禁用，1：启用',
+  "create_time" datetime NOT NULL COMMENT '创建时间',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "create_by" bigint DEFAULT NULL COMMENT '创建人id',
+  "update_by" bigint DEFAULT NULL COMMENT '更新人id',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("id") USING BTREE,
+  UNIQUE KEY "name" ("name") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='房型表';
 
 ####################
@@ -1095,11 +1098,11 @@ DROP TABLE IF EXISTS `student`;
 ####################
 ##  table student ddl
 ####################
-CREATE TABLE `student` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `created_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_eo_0900_ai_ci DEFAULT NULL COMMENT '姓名',
-  PRIMARY KEY (`id`)
+CREATE TABLE "student" (
+  "id" int unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  "created_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_eo_0900_ai_ci DEFAULT NULL COMMENT '姓名',
+  PRIMARY KEY ("id")
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_eo_0900_ai_ci COMMENT='学生';
 
 ####################
@@ -1118,18 +1121,18 @@ DROP TABLE IF EXISTS `sys_config`;
 ####################
 ##  table sys_config ddl
 ####################
-CREATE TABLE `sys_config` (
-  `config_id` int NOT NULL AUTO_INCREMENT COMMENT '参数主键',
-  `config_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数名称',
-  `config_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数键名',
-  `config_value` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数键值',
-  `config_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`config_id`) USING BTREE
+CREATE TABLE "sys_config" (
+  "config_id" int NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+  "config_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数名称',
+  "config_key" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数键名',
+  "config_value" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '参数键值',
+  "config_type" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("config_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='参数配置表';
 
 ####################
@@ -1154,22 +1157,22 @@ DROP TABLE IF EXISTS `sys_dept`;
 ####################
 ##  table sys_dept ddl
 ####################
-CREATE TABLE `sys_dept` (
-  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门id',
-  `parent_id` bigint DEFAULT '0' COMMENT '父部门id',
-  `ancestors` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '祖级列表',
-  `dept_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '部门名称',
-  `order_num` int DEFAULT '0' COMMENT '显示顺序',
-  `leader` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '负责人',
-  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '联系电话',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '邮箱',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '部门状态（0正常 1停用）',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`dept_id`) USING BTREE
+CREATE TABLE "sys_dept" (
+  "dept_id" bigint NOT NULL AUTO_INCREMENT COMMENT '部门id',
+  "parent_id" bigint DEFAULT '0' COMMENT '父部门id',
+  "ancestors" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '祖级列表',
+  "dept_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '部门名称',
+  "order_num" int DEFAULT '0' COMMENT '显示顺序',
+  "leader" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '负责人',
+  "phone" varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '联系电话',
+  "email" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '邮箱',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '部门状态（0正常 1停用）',
+  "del_flag" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY ("dept_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='部门表';
 
 ####################
@@ -1202,22 +1205,22 @@ DROP TABLE IF EXISTS `sys_dict_data`;
 ####################
 ##  table sys_dict_data ddl
 ####################
-CREATE TABLE `sys_dict_data` (
-  `dict_code` bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-  `dict_sort` int DEFAULT '0' COMMENT '字典排序',
-  `dict_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典标签',
-  `dict_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典键值',
-  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
-  `css_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
-  `list_class` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '表格回显样式',
-  `is_default` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1停用）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`dict_code`) USING BTREE
+CREATE TABLE "sys_dict_data" (
+  "dict_code" bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+  "dict_sort" int DEFAULT '0' COMMENT '字典排序',
+  "dict_label" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典标签',
+  "dict_value" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典键值',
+  "dict_type" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
+  "css_class" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '样式属性（其他样式扩展）',
+  "list_class" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '表格回显样式',
+  "is_default" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("dict_code") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='字典数据表';
 
 ####################
@@ -1275,18 +1278,18 @@ DROP TABLE IF EXISTS `sys_dict_type`;
 ####################
 ##  table sys_dict_type ddl
 ####################
-CREATE TABLE `sys_dict_type` (
-  `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
-  `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典名称',
-  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1停用）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`dict_id`) USING BTREE,
-  UNIQUE KEY `dict_type` (`dict_type`) USING BTREE
+CREATE TABLE "sys_dict_type" (
+  "dict_id" bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+  "dict_name" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典名称',
+  "dict_type" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '字典类型',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1停用）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("dict_id") USING BTREE,
+  UNIQUE KEY "dict_type" ("dict_type") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='字典类型表';
 
 ####################
@@ -1320,21 +1323,21 @@ DROP TABLE IF EXISTS `sys_job`;
 ####################
 ##  table sys_job ddl
 ####################
-CREATE TABLE `sys_job` (
-  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务ID',
-  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '任务名称',
-  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
-  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '调用目标字符串',
-  `cron_expression` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT 'cron执行表达式',
-  `misfire_policy` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
-  `concurrent` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1暂停）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '备注信息',
-  PRIMARY KEY (`job_id`,`job_name`,`job_group`) USING BTREE
+CREATE TABLE "sys_job" (
+  "job_id" bigint NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+  "job_name" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '任务名称',
+  "job_group" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
+  "invoke_target" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '调用目标字符串',
+  "cron_expression" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT 'cron执行表达式',
+  "misfire_policy" varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '3' COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
+  "concurrent" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '状态（0正常 1暂停）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '备注信息',
+  PRIMARY KEY ("job_id","job_name","job_group") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='定时任务调度表';
 
 ####################
@@ -1358,17 +1361,17 @@ DROP TABLE IF EXISTS `sys_job_log`;
 ####################
 ##  table sys_job_log ddl
 ####################
-CREATE TABLE `sys_job_log` (
-  `job_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
-  `job_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '任务名称',
-  `job_group` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '任务组名',
-  `invoke_target` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '调用目标字符串',
-  `job_message` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '日志信息',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
-  `exception_info` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '异常信息',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='定时任务调度日志表';
+CREATE TABLE "sys_job_log" (
+  "job_log_id" bigint NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
+  "job_name" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '任务名称',
+  "job_group" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '任务组名',
+  "invoke_target" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '调用目标字符串',
+  "job_message" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '日志信息',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
+  "exception_info" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '异常信息',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY ("job_log_id") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='定时任务调度日志表';
 
 ####################
 ##  sys_job_log data
@@ -1622,6 +1625,8 @@ INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time
 INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time`,`job_group`,`job_log_id`,`invoke_target`,`status`) VALUES ('护理任务生成定时任务 总共耗时：296毫秒','','护理任务生成定时任务','2025-08-26T07:48:03','DEFAULT',131,'createNursingTaskJob.createNursingTaskJob','0');
 INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time`,`job_group`,`job_log_id`,`invoke_target`,`status`) VALUES ('护理任务生成定时任务 总共耗时：469毫秒','','护理任务生成定时任务','2025-08-26T07:49:06','DEFAULT',132,'createNursingTaskJob.createNursingTaskJob','0');
 INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time`,`job_group`,`job_log_id`,`invoke_target`,`status`) VALUES ('护理任务生成定时任务 总共耗时：795毫秒','','护理任务生成定时任务','2025-08-26T07:50:03','DEFAULT',133,'createNursingTaskJob.createNursingTaskJob','0');
+INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time`,`job_group`,`job_log_id`,`invoke_target`,`status`) VALUES ('护理任务生成定时任务 总共耗时：98毫秒','','护理任务生成定时任务','2025-10-15T19:57:16','DEFAULT',134,'createNursingTaskJob.createNursingTaskJob','0');
+INSERT INTO `sys_job_log`(`job_message`,`exception_info`,`job_name`,`create_time`,`job_group`,`job_log_id`,`invoke_target`,`status`) VALUES ('护理任务生成定时任务 总共耗时：60436毫秒','','护理任务生成定时任务','2025-10-15T19:59:11','DEFAULT',135,'createNursingTaskJob.createNursingTaskJob','0');
 
 ####################
 ##  sys_logininfor
@@ -1631,20 +1636,20 @@ DROP TABLE IF EXISTS `sys_logininfor`;
 ####################
 ##  table sys_logininfor ddl
 ####################
-CREATE TABLE `sys_logininfor` (
-  `info_id` bigint NOT NULL AUTO_INCREMENT COMMENT '访问ID',
-  `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户账号',
-  `ipaddr` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '登录IP地址',
-  `login_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '登录地点',
-  `browser` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '浏览器类型',
-  `os` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作系统',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '登录状态（0成功 1失败）',
-  `msg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '提示消息',
-  `login_time` datetime DEFAULT NULL COMMENT '访问时间',
-  PRIMARY KEY (`info_id`) USING BTREE,
-  KEY `idx_sys_logininfor_s` (`status`) USING BTREE,
-  KEY `idx_sys_logininfor_lt` (`login_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=503 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='系统访问记录';
+CREATE TABLE "sys_logininfor" (
+  "info_id" bigint NOT NULL AUTO_INCREMENT COMMENT '访问ID',
+  "user_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户账号',
+  "ipaddr" varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '登录IP地址',
+  "login_location" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '登录地点',
+  "browser" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '浏览器类型',
+  "os" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作系统',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '登录状态（0成功 1失败）',
+  "msg" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '提示消息',
+  "login_time" datetime DEFAULT NULL COMMENT '访问时间',
+  PRIMARY KEY ("info_id") USING BTREE,
+  KEY "idx_sys_logininfor_s" ("status") USING BTREE,
+  KEY "idx_sys_logininfor_lt" ("login_time") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=523 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='系统访问记录';
 
 ####################
 ##  sys_logininfor data
@@ -2056,6 +2061,26 @@ INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time
 INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-08-26T08:58:11','Chrome 12',500,'127.0.0.1','0');
 INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-08-26T12:09:38','Chrome 12',501,'127.0.0.1','0');
 INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-08-26T13:15:22','Chrome 12',502,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-25T21:56:16','Chrome 12',503,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-26T10:08:21','Chrome 12',504,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-26T11:24:46','Chrome 12',505,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-26T14:32:02','Chrome 12',506,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-26T16:54:50','Chrome 12',507,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-26T17:16:01','Chrome 14',508,'172.16.43.100','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-28T22:06:45','Chrome 12',509,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-09-29T15:40:20','Chrome 12',510,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-10T15:01:26','Chrome 12',511,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-10T16:48:34','Chrome 12',512,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-12T14:24:44','Chrome 12',513,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-12T16:49:38','Chrome 12',514,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-12T22:48:30','Chrome 12',515,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-13T12:48:03','Chrome 12',516,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-15T19:56:26','Chrome 12',517,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-15T20:41:38','Chrome 12',518,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-15T22:46:30','Chrome 12',519,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-15T23:21:39','Chrome 12',520,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-16T10:23:04','Chrome 12',521,'127.0.0.1','0');
+INSERT INTO `sys_logininfor`(`login_location`,`msg`,`os`,`user_name`,`login_time`,`browser`,`info_id`,`ipaddr`,`status`) VALUES ('内网IP','登录成功','Windows 10','admin','2025-10-16T10:57:38','Chrome 12',522,'127.0.0.1','0');
 
 ####################
 ##  sys_menu
@@ -2065,29 +2090,29 @@ DROP TABLE IF EXISTS `sys_menu`;
 ####################
 ##  table sys_menu ddl
 ####################
-CREATE TABLE `sys_menu` (
-  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
-  `menu_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
-  `parent_id` bigint DEFAULT '0' COMMENT '父菜单ID',
-  `order_num` int DEFAULT '0' COMMENT '显示顺序',
-  `path` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '路由地址',
-  `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '组件路径',
-  `query` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '路由参数',
-  `route_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '路由名称',
-  `is_frame` int DEFAULT '1' COMMENT '是否为外链（0是 1否）',
-  `is_cache` int DEFAULT '0' COMMENT '是否缓存（0缓存 1不缓存）',
-  `menu_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
-  `visible` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '菜单状态（0显示 1隐藏）',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '菜单状态（0正常 1停用）',
-  `perms` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '权限标识',
-  `icon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '#' COMMENT '菜单图标',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '备注',
-  PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2053 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='菜单权限表';
+CREATE TABLE "sys_menu" (
+  "menu_id" bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  "menu_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
+  "parent_id" bigint DEFAULT '0' COMMENT '父菜单ID',
+  "order_num" int DEFAULT '0' COMMENT '显示顺序',
+  "path" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '路由地址',
+  "component" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '组件路径',
+  "query" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '路由参数',
+  "route_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '路由名称',
+  "is_frame" int DEFAULT '1' COMMENT '是否为外链（0是 1否）',
+  "is_cache" int DEFAULT '0' COMMENT '是否缓存（0缓存 1不缓存）',
+  "menu_type" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
+  "visible" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '菜单状态（0显示 1隐藏）',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '菜单状态（0正常 1停用）',
+  "perms" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '权限标识',
+  "icon" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '#' COMMENT '菜单图标',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '备注',
+  PRIMARY KEY ("menu_id") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2055 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='菜单权限表';
 
 ####################
 ##  sys_menu data
@@ -2216,6 +2241,8 @@ INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cach
 INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cache`,`icon`,`remark`,`is_frame`,`create_by`,`path`,`component`,`update_time`,`parent_id`,`menu_name`,`perms`,`order_num`,`update_by`,`menu_id`,`status`) VALUES ('0','2024-08-29T06:52:12','','C',0,'peoples','',1,'admin','oldPeople','nursing/oldPeople/index','2024-08-29T06:52:23',2000,'负责老人','',4,'admin',2041,'0');
 INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cache`,`icon`,`remark`,`is_frame`,`create_by`,`path`,`component`,`parent_id`,`menu_name`,`order_num`,`update_by`,`menu_id`,`status`) VALUES ('0','2024-08-29T06:53:06','','C',0,'redis-list','',1,'admin','arrange','nursing/arrange/index',2000,'任务安排',5,'',2042,'0');
 INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cache`,`icon`,`remark`,`is_frame`,`create_by`,`path`,`component`,`parent_id`,`menu_name`,`order_num`,`update_by`,`menu_id`,`status`) VALUES ('1','2024-08-29T06:53:37','','C',0,'#','',1,'admin','arrangeDetails','nursing/arrange/details',2000,'任务安排详情',1,'',2043,'0');
+INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cache`,`icon`,`remark`,`is_frame`,`create_by`,`path`,`update_time`,`parent_id`,`menu_name`,`perms`,`order_num`,`update_by`,`menu_id`,`status`) VALUES ('0','2025-09-25T21:59:33','','M',0,'AI图标_黑白','',1,'admin','ai','2025-10-10T17:03:07',0,'中州智询','',1,'admin',2053,'0');
+INSERT INTO `sys_menu`(`visible`,`create_time`,`route_name`,`menu_type`,`is_cache`,`icon`,`remark`,`is_frame`,`create_by`,`path`,`component`,`update_time`,`parent_id`,`menu_name`,`perms`,`order_num`,`update_by`,`menu_id`,`status`) VALUES ('0','2025-09-25T22:00:50','','C',0,'AI图标','',1,'admin','difyRag','nursing/zhixun/index','2025-10-10T17:04:09',2053,'小智','',0,'admin',2054,'0');
 
 ####################
 ##  sys_notice
@@ -2225,18 +2252,18 @@ DROP TABLE IF EXISTS `sys_notice`;
 ####################
 ##  table sys_notice ddl
 ####################
-CREATE TABLE `sys_notice` (
-  `notice_id` int NOT NULL AUTO_INCREMENT COMMENT '公告ID',
-  `notice_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '公告标题',
-  `notice_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '公告类型（1通知 2公告）',
-  `notice_content` longblob COMMENT '公告内容',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '公告状态（0正常 1关闭）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`notice_id`) USING BTREE
+CREATE TABLE "sys_notice" (
+  "notice_id" int NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  "notice_title" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '公告标题',
+  "notice_type" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '公告类型（1通知 2公告）',
+  "notice_content" longblob COMMENT '公告内容',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '公告状态（0正常 1关闭）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("notice_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='通知公告表';
 
 ####################
@@ -2257,29 +2284,29 @@ DROP TABLE IF EXISTS `sys_oper_log`;
 ####################
 ##  table sys_oper_log ddl
 ####################
-CREATE TABLE `sys_oper_log` (
-  `oper_id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
-  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '模块标题',
-  `business_type` int DEFAULT '0' COMMENT '业务类型（0其它 1新增 2修改 3删除）',
-  `method` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '方法名称',
-  `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求方式',
-  `operator_type` int DEFAULT '0' COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
-  `oper_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作人员',
-  `dept_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '部门名称',
-  `oper_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求URL',
-  `oper_ip` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '主机地址',
-  `oper_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作地点',
-  `oper_param` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求参数',
-  `json_result` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '返回参数',
-  `status` int DEFAULT '0' COMMENT '操作状态（0正常 1异常）',
-  `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '错误消息',
-  `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
-  `cost_time` bigint DEFAULT '0' COMMENT '消耗时间',
-  PRIMARY KEY (`oper_id`) USING BTREE,
-  KEY `idx_sys_oper_log_bt` (`business_type`) USING BTREE,
-  KEY `idx_sys_oper_log_s` (`status`) USING BTREE,
-  KEY `idx_sys_oper_log_ot` (`oper_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=655 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='操作日志记录';
+CREATE TABLE "sys_oper_log" (
+  "oper_id" bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
+  "title" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '模块标题',
+  "business_type" int DEFAULT '0' COMMENT '业务类型（0其它 1新增 2修改 3删除）',
+  "method" varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '方法名称',
+  "request_method" varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求方式',
+  "operator_type" int DEFAULT '0' COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
+  "oper_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作人员',
+  "dept_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '部门名称',
+  "oper_url" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求URL',
+  "oper_ip" varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '主机地址',
+  "oper_location" varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '操作地点',
+  "oper_param" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '请求参数',
+  "json_result" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '返回参数',
+  "status" int DEFAULT '0' COMMENT '操作状态（0正常 1异常）',
+  "error_msg" varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '错误消息',
+  "oper_time" datetime DEFAULT NULL COMMENT '操作时间',
+  "cost_time" bigint DEFAULT '0' COMMENT '消耗时间',
+  PRIMARY KEY ("oper_id") USING BTREE,
+  KEY "idx_sys_oper_log_bt" ("business_type") USING BTREE,
+  KEY "idx_sys_oper_log_s" ("status") USING BTREE,
+  KEY "idx_sys_oper_log_ot" ("oper_time") USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=672 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='操作日志记录';
 
 ####################
 ##  sys_oper_log data
@@ -2817,109 +2844,126 @@ INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_n
 INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-07T01:48:38','','com.zzyl.quartz.controller.SysJobController.run()','{`jobGroup`:`DEFAULT`,`jobId`:106,`misfirePolicy`:`0`,`params`:{}}','admin','院长办公室','PUT','定时任务','内网IP',1,'127.0.0.1','{`msg`:`操作成功`,`code`:200}',10,2,'/monitor/job/run',549,0);
 INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-07T02:31:11','','com.zzyl.quartz.controller.SysJobController.run()','{`jobGroup`:`DEFAULT`,`jobId`:107,`misfirePolicy`:`0`,`params`:{}}','admin','院长办公室','PUT','定时任务','内网IP',1,'127.0.0.1','{`msg`:`操作成功`,`code`:200}',29,2,'/monitor/job/run',550,0);
 INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-16T01:46:26','','com.zzyl.web.controller.system.SysMenuController.add()','{`children`:[],`component`:`nursing/test/index`,`createBy`:`admin`,`icon`:`documentation`,`isCache`:`0`,`isFrame`:`1`,`menuName`:`测试`,`menuType`:`C`,`orderNum`:2,`params`:{},`parentId`:2036,`path`:`test`,`status`:`0`,`visible`:`0`}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{`msg`:`操作成功`,`code`:200}',24,1,'/system/menu',551,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:15:57','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','院长办公室','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',49,3,'/system/menu/2051',552,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:48:08','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"createBy":"admin","icon":"button","isCache":"0","isFrame":"1","menuName":"222","menuType":"M","orderNum":2,"params":{},"parentId":2036,"path":"222","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,1,'/system/menu',553,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:55:02','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','院长办公室','DELETE','菜单管理','XX XX',1,'114.242.26.45','{"msg":"操作成功","code":200}',35,3,'/system/menu/2052',554,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-25T03:34:19','com.zzyl.nursing.controller.HealthAssessmentController.add()','{"elderName":"刘爱国","idCard":"132123195612131234","physicalExamInstitution":"黑马体检中心","physicalReportUrl":"https://itheim.oss-cn-beijing.aliyuncs.com/132123195612131234.pdf"}','admin','院长办公室','POST','健康评估','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200,"data":4}',57250,1,'/nursing/healthAssessment',555,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-25T08:35:23','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":1,"params":{},"status":0,"updateBy":"1","updateTime":"2025-06-25 16:35:23"}','admin','院长办公室','PUT','护理项目','XX XX',1,'124.237.116.109','{"msg":"操作成功","code":200}',87,2,'/nursing/project',556,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T02:40:36','com.zzyl.nursing.controller.NursingPlanController.edit()','{"id":133,"status":0}','admin','院长办公室','PUT','护理计划','XX XX',1,'36.98.135.0','{"msg":"操作成功","code":200}',34,2,'/nursing/nursingPlan',557,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T02:40:37','com.zzyl.nursing.controller.NursingPlanController.edit()','{"id":133,"status":1}','admin','院长办公室','PUT','护理计划','XX XX',1,'36.98.135.0','{"msg":"操作成功","code":200}',23,2,'/nursing/nursingPlan',558,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T08:58:40','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-20 11:18:21","description":"12232","fee":2000,"id":77,"lplanId":133,"name":"1号护理计划","params":{},"status":1,"updateTime":"2025-06-26 16:58:40"}','admin','院长办公室','PUT','护理等级','XX XX',1,'36.98.207.1','{"msg":"操作成功","code":200}',52,2,'/nursing/nursingLevel',559,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T08:58:55','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-20 11:18:21","description":"12232","fee":2000,"id":77,"lplanId":133,"name":"1号护理计划2","params":{},"status":1,"updateTime":"2025-06-26 16:58:55"}','admin','院长办公室','PUT','护理等级','XX XX',1,'36.98.207.1','{"msg":"操作成功","code":200}',37,2,'/nursing/nursingLevel',560,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T01:57:14','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":0,"updateTime":"2025-06-27 09:57:14"}','admin','院长办公室','PUT','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',26,2,'/nursing/nursingLevel',561,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:06:18','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":1,"params":{},"status":1,"updateBy":"1","updateTime":"2025-06-27 10:06:18"}','admin','院长办公室','PUT','护理项目','XX XX',1,'218.12.18.138','{"msg":"操作成功","code":200}',23,2,'/nursing/project',562,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:23:38','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":1,"updateTime":"2025-06-27 10:23:38"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',18,2,'/nursing/nursingLevel',563,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:23:40','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":0,"updateTime":"2025-06-27 10:23:40"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',20,2,'/nursing/nursingLevel',564,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:10','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"lplanId":134,"name":"4号护理等级","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',104,1,'/nursing/nursingLevel',565,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:29','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:29","fee":53353,"id":80,"lplanId":133,"name":"516","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',28,1,'/nursing/nursingLevel',566,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:45','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:45","fee":5453,"id":81,"lplanId":134,"name":"jbj","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',21,1,'/nursing/nursingLevel',567,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:59','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:59","fee":2553,"id":82,"lplanId":135,"name":"16541","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',568,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:09','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:09","fee":3215,"id":83,"lplanId":134,"name":"bhkjb","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',22,1,'/nursing/nursingLevel',569,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:19','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:19","fee":35,"id":84,"lplanId":134,"name":"nb","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',18,1,'/nursing/nursingLevel',570,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:30','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:30","fee":5132,"id":85,"lplanId":133,"name":"23","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',34,1,'/nursing/nursingLevel',571,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:40','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:40","fee":14,"id":86,"lplanId":135,"name":"21","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',572,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:37:49','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:37:48","fee":0,"id":87,"lplanId":135,"name":"zzz","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',573,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:38:53','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','院长办公室','DELETE','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',46,3,'/nursing/nursingLevel/77',574,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:26','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:48:26"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',19,2,'/nursing/nursingLevel',575,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:31','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:48:31"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',27,2,'/nursing/nursingLevel',576,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:41','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3000,"id":78,"lplanId":134,"name":"3号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:41"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',29,2,'/nursing/nursingLevel',577,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:51','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3001,"id":78,"lplanId":134,"name":"3号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:51"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',19,2,'/nursing/nursingLevel',578,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:58','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:58"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',22,2,'/nursing/nursingLevel',579,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:49:14','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"lplanId":134,"name":"4号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:49:13"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',20,2,'/nursing/nursingLevel',580,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T05:15:43','com.zzyl.nursing.controller.NursingProjectController.remove()','{}','admin','院长办公室','DELETE','护理项目','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',41,3,'/nursing/project/9',581,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T05:15:50','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":15,"params":{},"status":0,"updateBy":"1","updateTime":"2025-06-27 13:15:50"}','admin','院长办公室','PUT','护理项目','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',21,2,'/nursing/project',582,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T12:26:06','com.zzyl.nursing.controller.NursingPlanController.add()','{"planName":"4号护理计划","projectPlans":[{"executeCycle":1,"executeFrequency":1,"executeTime":"20:23:38","projectId":"3"},{"executeCycle":0,"executeFrequency":1,"executeTime":"20:25:50","projectId":"1"}],"sortNo":1,"status":1}','admin','院长办公室','POST','护理计划','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',38,1,'/nursing/nursingPlan',583,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-07-05T08:02:38','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":2,"params":{},"status":0,"updateBy":"1","updateTime":"2025-07-05 16:02:38"}','admin','院长办公室','PUT','护理项目','XX XX',1,'110.52.183.140','{"msg":"操作成功","code":200}',15,2,'/nursing/project',584,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:05:55','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',113,3,'/monitor/job/106',585,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:06','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',62,3,'/monitor/job/105',586,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:06:10','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',63,3,'/monitor/job/103',587,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:36','com.zzyl.nursing.controller.RoomController.edit()','{"code":"101","id":1,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:09:35"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',41,2,'/elder/room',588,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:39','com.zzyl.nursing.controller.RoomController.edit()','{"code":"101","id":1,"params":{},"roomTypeId":2,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:09:39"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',589,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:43','com.zzyl.nursing.controller.RoomController.edit()','{"code":"102","id":2,"params":{},"roomTypeId":2,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:09:43"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',590,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:48','com.zzyl.nursing.controller.RoomController.edit()','{"code":"103","id":3,"params":{},"roomTypeId":4,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:09:47"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',37,2,'/elder/room',591,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:52','com.zzyl.nursing.controller.RoomController.edit()','{"code":"104","id":4,"params":{},"roomTypeId":116,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:09:52"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',592,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:56','com.zzyl.nursing.controller.RoomController.edit()','{"code":"105","id":5,"params":{},"roomTypeId":1,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:09:55"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',593,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10','com.zzyl.nursing.controller.RoomController.edit()','{"code":"106","id":6,"params":{},"roomTypeId":2,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:09:59"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,2,'/elder/room',594,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:03','com.zzyl.nursing.controller.RoomController.edit()','{"code":"107","id":7,"params":{},"roomTypeId":5,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:02"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',595,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:07','com.zzyl.nursing.controller.RoomController.edit()','{"code":"201","id":8,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:07"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',37,2,'/elder/room',596,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:12','com.zzyl.nursing.controller.RoomController.edit()','{"code":"202","id":9,"params":{},"roomTypeId":4,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:10:12"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,2,'/elder/room',597,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:15','com.zzyl.nursing.controller.RoomController.edit()','{"code":"203","id":10,"params":{},"roomTypeId":1,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:10:14"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/elder/room',598,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:19','com.zzyl.nursing.controller.RoomController.edit()','{"code":"204","id":11,"params":{},"roomTypeId":4,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:10:19"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/elder/room',599,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:23','com.zzyl.nursing.controller.RoomController.edit()','{"code":"205","id":12,"params":{},"roomTypeId":5,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:10:22"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',600,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:26','com.zzyl.nursing.controller.RoomController.edit()','{"code":"206","id":13,"params":{},"roomTypeId":103,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:10:25"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',39,2,'/elder/room',601,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:29','com.zzyl.nursing.controller.RoomController.edit()','{"code":"207","id":14,"params":{},"roomTypeId":4,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:29"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',602,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:35','com.zzyl.nursing.controller.RoomController.edit()','{"code":"301","id":15,"params":{},"roomTypeId":3,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:35"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',40,2,'/elder/room',603,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:38','com.zzyl.nursing.controller.RoomController.edit()','{"code":"302","id":16,"params":{},"roomTypeId":5,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:10:37"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',604,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:40','com.zzyl.nursing.controller.RoomController.edit()','{"code":"303","id":17,"params":{},"roomTypeId":103,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:10:40"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',605,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:43','com.zzyl.nursing.controller.RoomController.edit()','{"code":"304","id":18,"params":{},"roomTypeId":5,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:10:43"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',606,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:47','com.zzyl.nursing.controller.RoomController.edit()','{"code":"305","id":19,"params":{},"roomTypeId":5,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:10:46"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',607,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:49','com.zzyl.nursing.controller.RoomController.edit()','{"code":"306","id":20,"params":{},"roomTypeId":103,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:10:49"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',608,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:55','com.zzyl.nursing.controller.RoomController.edit()','{"code":"307","id":21,"params":{},"roomTypeId":5,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:55"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,2,'/elder/room',609,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:59','com.zzyl.nursing.controller.RoomController.edit()','{"code":"201","id":8,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:59"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',24,2,'/elder/room',610,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:11:29','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',34,3,'/system/menu/2050',611,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:11:54','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:14:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2037,2020,2021,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2048],"params":{},"roleId":102,"roleKey":"nursing_elder","roleName":"护理员","roleSort":5,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',108,2,'/system/role',612,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:03','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2036,2038,2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2020,2021,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',119,2,'/system/role',613,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:09','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',121,2,'/system/role',614,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:15','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,3,'/system/menu/2050',615,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:30','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',20,3,'/system/menu/2038',616,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:41','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:15:38","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":103,"roleKey":"administrator","roleName":"行政","roleSort":77,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',114,2,'/system/role',617,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:49','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2019,2020,2021,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',104,2,'/system/role',618,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:51','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',108,2,'/system/role',619,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:57','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',50,3,'/system/menu/2038',620,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:59','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',42,3,'/system/menu/2036',621,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:30','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',47,3,'/nursing/nursingLevel/86',622,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:32','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,3,'/nursing/nursingLevel/87',623,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:33','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,3,'/nursing/nursingLevel/85',624,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:35','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":79,"params":{},"status":1,"updateTime":"2025-08-26 15:29:35"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,2,'/nursing/nursingLevel',625,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:38','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,3,'/nursing/nursingLevel/80',626,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:40','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,3,'/nursing/nursingLevel/81',627,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:41','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,3,'/nursing/nursingLevel/82',628,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:43','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,3,'/nursing/nursingLevel/83',629,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:44','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',24,3,'/nursing/nursingLevel/84',630,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:22','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',20,3,'/system/menu/2048',631,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:32','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:15:38","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":103,"roleKey":"administrator","roleName":"行政","roleSort":77,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',116,2,'/system/role',632,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:38','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:14:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2020,2021,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042],"params":{},"roleId":102,"roleKey":"nursing_elder","roleName":"护理员","roleSort":5,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',117,2,'/system/role',633,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:45','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2019,2020,2021,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',115,2,'/system/role',634,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:49','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',117,2,'/system/role',635,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:54','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',48,3,'/system/menu/2047',636,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:56','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',50,3,'/system/menu/2045',637,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:58','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2044',638,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',46,3,'/system/menu/2046',639,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31:02','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2048',640,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31:04','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2037',641,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:36:13','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',55,2,'/monitor/job/run',642,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:37:16','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,2,'/monitor/job/run',643,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:37:43','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,2,'/monitor/job/run',644,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:38:14','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',3924,2,'/monitor/job/run',645,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:41:30','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',47,2,'/monitor/job/run',646,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:43:20','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',35,2,'/monitor/job/run',647,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:16','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"name":"2号护理等级","params":{},"planId":136,"status":1,"updateTime":"2025-08-26 15:45:16"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',55,2,'/nursing/nursingLevel',648,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:20','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3001,"id":78,"name":"3号护理等级","params":{},"planId":136,"status":1,"updateTime":"2025-08-26 15:45:19"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/nursing/nursingLevel',649,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:23','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"name":"4号护理等级","params":{},"planId":137,"status":1,"updateTime":"2025-08-26 15:45:23"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,2,'/nursing/nursingLevel',650,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:35','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',34,2,'/monitor/job/run',651,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:48:03','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',36,2,'/monitor/job/run',652,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:49:05','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/monitor/job/run',653,0);
-INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:50:02','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',35,2,'/monitor/job/run',654,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:15:57','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','院长办公室','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',49,3,'/system/menu/2051',552,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:48:08','','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"createBy":"admin","icon":"button","isCache":"0","isFrame":"1","menuName":"222","menuType":"M","orderNum":2,"params":{},"parentId":2036,"path":"222","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,1,'/system/menu',553,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-20T09:55:02','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','院长办公室','DELETE','菜单管理','XX XX',1,'114.242.26.45','{"msg":"操作成功","code":200}',35,3,'/system/menu/2052',554,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-05-25T03:34:19','','com.zzyl.nursing.controller.HealthAssessmentController.add()','{"elderName":"刘爱国","idCard":"132123195612131234","physicalExamInstitution":"黑马体检中心","physicalReportUrl":"https://itheim.oss-cn-beijing.aliyuncs.com/132123195612131234.pdf"}','admin','院长办公室','POST','健康评估','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200,"data":4}',57250,1,'/nursing/healthAssessment',555,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-25T08:35:23','','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":1,"params":{},"status":0,"updateBy":"1","updateTime":"2025-06-25 16:35:23"}','admin','院长办公室','PUT','护理项目','XX XX',1,'124.237.116.109','{"msg":"操作成功","code":200}',87,2,'/nursing/project',556,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T02:40:36','','com.zzyl.nursing.controller.NursingPlanController.edit()','{"id":133,"status":0}','admin','院长办公室','PUT','护理计划','XX XX',1,'36.98.135.0','{"msg":"操作成功","code":200}',34,2,'/nursing/nursingPlan',557,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T02:40:37','','com.zzyl.nursing.controller.NursingPlanController.edit()','{"id":133,"status":1}','admin','院长办公室','PUT','护理计划','XX XX',1,'36.98.135.0','{"msg":"操作成功","code":200}',23,2,'/nursing/nursingPlan',558,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T08:58:40','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-20 11:18:21","description":"12232","fee":2000,"id":77,"lplanId":133,"name":"1号护理计划","params":{},"status":1,"updateTime":"2025-06-26 16:58:40"}','admin','院长办公室','PUT','护理等级','XX XX',1,'36.98.207.1','{"msg":"操作成功","code":200}',52,2,'/nursing/nursingLevel',559,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-26T08:58:55','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-20 11:18:21","description":"12232","fee":2000,"id":77,"lplanId":133,"name":"1号护理计划2","params":{},"status":1,"updateTime":"2025-06-26 16:58:55"}','admin','院长办公室','PUT','护理等级','XX XX',1,'36.98.207.1','{"msg":"操作成功","code":200}',37,2,'/nursing/nursingLevel',560,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T01:57:14','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":0,"updateTime":"2025-06-27 09:57:14"}','admin','院长办公室','PUT','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',26,2,'/nursing/nursingLevel',561,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:06:18','','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":1,"params":{},"status":1,"updateBy":"1","updateTime":"2025-06-27 10:06:18"}','admin','院长办公室','PUT','护理项目','XX XX',1,'218.12.18.138','{"msg":"操作成功","code":200}',23,2,'/nursing/project',562,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:23:38','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":1,"updateTime":"2025-06-27 10:23:38"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',18,2,'/nursing/nursingLevel',563,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:23:40','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":76,"params":{},"status":0,"updateTime":"2025-06-27 10:23:40"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',20,2,'/nursing/nursingLevel',564,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:10','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"lplanId":134,"name":"4号护理等级","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',104,1,'/nursing/nursingLevel',565,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:29','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:29","fee":53353,"id":80,"lplanId":133,"name":"516","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',28,1,'/nursing/nursingLevel',566,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:45','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:45","fee":5453,"id":81,"lplanId":134,"name":"jbj","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',21,1,'/nursing/nursingLevel',567,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:32:59','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:32:59","fee":2553,"id":82,"lplanId":135,"name":"16541","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',568,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:09','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:09","fee":3215,"id":83,"lplanId":134,"name":"bhkjb","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',22,1,'/nursing/nursingLevel',569,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:19','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:19","fee":35,"id":84,"lplanId":134,"name":"nb","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',18,1,'/nursing/nursingLevel',570,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:30','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:30","fee":5132,"id":85,"lplanId":133,"name":"23","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',34,1,'/nursing/nursingLevel',571,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:33:40','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:33:40","fee":14,"id":86,"lplanId":135,"name":"21","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',572,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:37:49','','com.zzyl.nursing.controller.NursingLevelController.add()','{"createTime":"2025-06-27 10:37:48","fee":0,"id":87,"lplanId":135,"name":"zzz","params":{},"status":1}','admin','院长办公室','POST','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',19,1,'/nursing/nursingLevel',573,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T02:38:53','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','院长办公室','DELETE','护理等级','XX XX',1,'27.128.104.63','{"msg":"操作成功","code":200}',46,3,'/nursing/nursingLevel/77',574,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:26','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:48:26"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',19,2,'/nursing/nursingLevel',575,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:31','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:48:31"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',27,2,'/nursing/nursingLevel',576,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:41','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3000,"id":78,"lplanId":134,"name":"3号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:41"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',29,2,'/nursing/nursingLevel',577,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:51','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3001,"id":78,"lplanId":134,"name":"3号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:51"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',19,2,'/nursing/nursingLevel',578,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:48:58','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"lplanId":134,"name":"2号护理等级","params":{},"status":1,"updateTime":"2025-06-27 12:48:58"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',22,2,'/nursing/nursingLevel',579,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T04:49:14','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"lplanId":134,"name":"4号护理等级","params":{},"status":0,"updateTime":"2025-06-27 12:49:13"}','admin','院长办公室','PUT','护理等级','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',20,2,'/nursing/nursingLevel',580,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T05:15:43','','com.zzyl.nursing.controller.NursingProjectController.remove()','{}','admin','院长办公室','DELETE','护理项目','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',41,3,'/nursing/project/9',581,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T05:15:50','','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":15,"params":{},"status":0,"updateBy":"1","updateTime":"2025-06-27 13:15:50"}','admin','院长办公室','PUT','护理项目','XX XX',1,'218.12.22.87','{"msg":"操作成功","code":200}',21,2,'/nursing/project',582,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-06-27T12:26:06','','com.zzyl.nursing.controller.NursingPlanController.add()','{"planName":"4号护理计划","projectPlans":[{"executeCycle":1,"executeFrequency":1,"executeTime":"20:23:38","projectId":"3"},{"executeCycle":0,"executeFrequency":1,"executeTime":"20:25:50","projectId":"1"}],"sortNo":1,"status":1}','admin','院长办公室','POST','护理计划','XX XX',1,'218.12.18.118','{"msg":"操作成功","code":200}',38,1,'/nursing/nursingPlan',583,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-07-05T08:02:38','','com.zzyl.nursing.controller.NursingProjectController.edit()','{"id":2,"params":{},"status":0,"updateBy":"1","updateTime":"2025-07-05 16:02:38"}','admin','院长办公室','PUT','护理项目','XX XX',1,'110.52.183.140','{"msg":"操作成功","code":200}',15,2,'/nursing/project',584,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:05:55','','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',113,3,'/monitor/job/106',585,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:06','','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',62,3,'/monitor/job/105',586,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:06:10','','com.zzyl.quartz.controller.SysJobController.remove()','{}','admin','研发部门','DELETE','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',63,3,'/monitor/job/103',587,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:36','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"101","id":1,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:09:35"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',41,2,'/elder/room',588,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:39','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"101","id":1,"params":{},"roomTypeId":2,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:09:39"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',589,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:43','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"102","id":2,"params":{},"roomTypeId":2,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:09:43"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',590,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:48','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"103","id":3,"params":{},"roomTypeId":4,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:09:47"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',37,2,'/elder/room',591,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:52','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"104","id":4,"params":{},"roomTypeId":116,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:09:52"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',592,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:09:56','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"105","id":5,"params":{},"roomTypeId":1,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:09:55"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',593,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"106","id":6,"params":{},"roomTypeId":2,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:09:59"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,2,'/elder/room',594,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:03','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"107","id":7,"params":{},"roomTypeId":5,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:02"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',595,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:07','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"201","id":8,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:07"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',37,2,'/elder/room',596,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:12','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"202","id":9,"params":{},"roomTypeId":4,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:10:12"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,2,'/elder/room',597,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:15','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"203","id":10,"params":{},"roomTypeId":1,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:10:14"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/elder/room',598,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:19','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"204","id":11,"params":{},"roomTypeId":4,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:10:19"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/elder/room',599,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:23','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"205","id":12,"params":{},"roomTypeId":5,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:10:22"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,2,'/elder/room',600,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:26','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"206","id":13,"params":{},"roomTypeId":103,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:10:25"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',39,2,'/elder/room',601,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:29','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"207","id":14,"params":{},"roomTypeId":4,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:29"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,2,'/elder/room',602,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:35','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"301","id":15,"params":{},"roomTypeId":3,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:35"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',40,2,'/elder/room',603,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:38','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"302","id":16,"params":{},"roomTypeId":5,"sort":2,"updateBy":"1","updateTime":"2025-08-26 15:10:37"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',604,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:40','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"303","id":17,"params":{},"roomTypeId":103,"sort":3,"updateBy":"1","updateTime":"2025-08-26 15:10:40"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',605,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:43','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"304","id":18,"params":{},"roomTypeId":5,"sort":4,"updateBy":"1","updateTime":"2025-08-26 15:10:43"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',606,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:47','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"305","id":19,"params":{},"roomTypeId":5,"sort":5,"updateBy":"1","updateTime":"2025-08-26 15:10:46"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,2,'/elder/room',607,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:49','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"306","id":20,"params":{},"roomTypeId":103,"sort":6,"updateBy":"1","updateTime":"2025-08-26 15:10:49"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',28,2,'/elder/room',608,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:55','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"307","id":21,"params":{},"roomTypeId":5,"sort":7,"updateBy":"1","updateTime":"2025-08-26 15:10:55"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,2,'/elder/room',609,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:10:59','','com.zzyl.nursing.controller.RoomController.edit()','{"code":"201","id":8,"params":{},"roomTypeId":1,"sort":1,"updateBy":"1","updateTime":"2025-08-26 15:10:59"}','admin','研发部门','PUT','房间','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',24,2,'/elder/room',610,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:11:29','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',34,3,'/system/menu/2050',611,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:11:54','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:14:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2037,2020,2021,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2048],"params":{},"roleId":102,"roleKey":"nursing_elder","roleName":"护理员","roleSort":5,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',108,2,'/system/role',612,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:03','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2036,2038,2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2020,2021,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',119,2,'/system/role',613,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:09','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',121,2,'/system/role',614,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:15','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,3,'/system/menu/2050',615,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:30','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',20,3,'/system/menu/2038',616,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:41','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:15:38","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":103,"roleKey":"administrator","roleName":"行政","roleSort":77,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',114,2,'/system/role',617,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:49','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2019,2020,2021,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',104,2,'/system/role',618,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:51','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,2037,2044,2045,2046,2047,2048,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',108,2,'/system/role',619,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:57','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',50,3,'/system/menu/2038',620,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:12:59','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',42,3,'/system/menu/2036',621,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:30','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',47,3,'/nursing/nursingLevel/86',622,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:32','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',29,3,'/nursing/nursingLevel/87',623,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:33','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',25,3,'/nursing/nursingLevel/85',624,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:35','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"id":79,"params":{},"status":1,"updateTime":"2025-08-26 15:29:35"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,2,'/nursing/nursingLevel',625,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:38','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,3,'/nursing/nursingLevel/80',626,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:40','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,3,'/nursing/nursingLevel/81',627,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:41','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',26,3,'/nursing/nursingLevel/82',628,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:43','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',27,3,'/nursing/nursingLevel/83',629,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:29:44','','com.zzyl.nursing.controller.NursingLevelController.remove()','{}','admin','研发部门','DELETE','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',24,3,'/nursing/nursingLevel/84',630,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:22','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"菜单已分配,不允许删除","code":601}',20,3,'/system/menu/2048',631,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:32','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:15:38","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":103,"roleKey":"administrator","roleName":"行政","roleSort":77,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',116,2,'/system/role',632,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:38','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-05-04 04:14:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2019,2020,2021,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042],"params":{},"roleId":102,"roleKey":"nursing_elder","roleName":"护理员","roleSort":5,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',117,2,'/system/role',633,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:45','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-26 01:33:42","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2022,2035,2023,2024,2025,2026,2027,2028,2039,2040,2019,2020,2021,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":101,"roleKey":"yuanzhang","roleName":"院长","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',115,2,'/system/role',634,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:49','','com.zzyl.web.controller.system.SysRoleController.edit()','{"admin":false,"createTime":"2025-04-25 15:21:26","dataScope":"1","delFlag":"0","deptCheckStrictly":true,"flag":false,"menuCheckStrictly":true,"menuIds":[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2043,2041,2042,1,100,1000,1001,1002,1003,1004,1005,1006,101,1007,1008,1009,1010,1011,102,1012,1013,1014,1015,103,1016,1017,1018,1019,104,1020,1021,1022,1023,1024,105,1025,1026,1027,1028,1029,106,1030,1031,1032,1033,1034,107,1035,1036,1037,1038,108,500,1039,1040,1041,501,1042,1043,1044,1045,2,109,1046,1047,1048,110,1049,1050,1051,1052,1053,1054,111,112,113,114,3,115,116,1055,1056,1057,1058,1059,1060,117],"params":{},"roleId":100,"roleKey":"sys_role","roleName":"行政主管","roleSort":0,"status":"0","updateBy":"admin"}','admin','研发部门','PUT','角色管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',117,2,'/system/role',635,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:54','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',48,3,'/system/menu/2047',636,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:56','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',50,3,'/system/menu/2045',637,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:30:58','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2044',638,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',46,3,'/system/menu/2046',639,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31:02','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2048',640,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:31:04','','com.zzyl.web.controller.system.SysMenuController.remove()','{}','admin','研发部门','DELETE','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',44,3,'/system/menu/2037',641,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:36:13','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',55,2,'/monitor/job/run',642,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:37:16','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',51,2,'/monitor/job/run',643,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:37:43','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,2,'/monitor/job/run',644,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:38:14','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',3924,2,'/monitor/job/run',645,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:41:30','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',47,2,'/monitor/job/run',646,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:43:20','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',35,2,'/monitor/job/run',647,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:16','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-14 16:33:16","description":"1223","fee":1500,"id":76,"name":"2号护理等级","params":{},"planId":136,"status":1,"updateTime":"2025-08-26 15:45:16"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',55,2,'/nursing/nursingLevel',648,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:20','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2024-08-29 16:58:00","description":"无","fee":3001,"id":78,"name":"3号护理等级","params":{},"planId":136,"status":1,"updateTime":"2025-08-26 15:45:19"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/nursing/nursingLevel',649,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:23','','com.zzyl.nursing.controller.NursingLevelController.edit()','{"createTime":"2025-06-27 10:32:10","fee":7,"id":79,"name":"4号护理等级","params":{},"planId":137,"status":1,"updateTime":"2025-08-26 15:45:23"}','admin','研发部门','PUT','护理等级','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',31,2,'/nursing/nursingLevel',650,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:45:35','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',34,2,'/monitor/job/run',651,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:48:03','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',36,2,'/monitor/job/run',652,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:49:05','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',33,2,'/monitor/job/run',653,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`error_msg`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-08-26T07:50:02','','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','研发部门','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',35,2,'/monitor/job/run',654,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T21:59:33','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"createBy":"admin","icon":"date","isCache":"0","isFrame":"1","menuName":"智能体","menuType":"M","orderNum":1,"params":{},"parentId":0,"path":"ai","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',49,1,'/system/menu',655,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:00:20','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"component":"http://127.0.0.1/chatbot/TV9eG87DiSQGpnor","icon":"dashboard","isCache":"0","isFrame":"0","menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"rag","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"新增菜单\'智能体\'失败，地址必须以http(s)://开头","code":500}',5,1,'/system/menu',656,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:00:26','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"component":"https://127.0.0.1/chatbot/TV9eG87DiSQGpnor","icon":"dashboard","isCache":"0","isFrame":"0","menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"rag","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"新增菜单\'智能体\'失败，地址必须以http(s)://开头","code":500}',4,1,'/system/menu',657,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:00:31','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"component":"https://127.0.0.1/chatbot/TV9eG87DiSQGpnor","icon":"dashboard","isCache":"0","isFrame":"0","menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"rag","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"新增菜单\'智能体\'失败，地址必须以http(s)://开头","code":500}',5,1,'/system/menu',658,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:00:50','com.zzyl.web.controller.system.SysMenuController.add()','{"children":[],"component":"","createBy":"admin","icon":"dashboard","isCache":"0","isFrame":"0","menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"http://127.0.0.1/chatbot/TV9eG87DiSQGpnor","status":"0","visible":"0"}','admin','院长办公室','POST','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',16,1,'/system/menu',659,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:01:57','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"0","menuId":2054,"menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"修改菜单\'智能体\'失败，地址必须以http(s)://开头","code":500}',4,2,'/system/menu',660,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:02','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"1","menuId":2054,"menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',24,2,'/system/menu',661,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:02:20','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/dify/index","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"1","menuId":2054,"menuName":"智能体","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',19,2,'/system/menu',662,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:06:21','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/dify/index","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"1","menuId":2054,"menuName":"知识库","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',14,2,'/system/menu',663,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-09-25T22:22:42','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/zhixun/index","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"1","menuId":2054,"menuName":"中州智询","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',12,2,'/system/menu',664,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-10T16:48:57','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"createTime":"2025-09-25 21:59:33","icon":"date","isCache":"0","isFrame":"1","menuId":2053,"menuName":"中州智询","menuType":"M","orderNum":1,"params":{},"parentId":0,"path":"ai","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',20,2,'/system/menu',665,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-10T16:49:16','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/zhixun/index","createTime":"2025-09-25 22:00:50","icon":"dashboard","isCache":"0","isFrame":"1","menuId":2054,"menuName":"小智","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',13,2,'/system/menu',666,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-10T17:01:20','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/zhixun/index","createTime":"2025-09-25 22:00:50","icon":"AI图标_黑白","isCache":"0","isFrame":"1","menuId":2054,"menuName":"小智","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',11,2,'/system/menu',667,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-10T17:03:07','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"createTime":"2025-09-25 21:59:33","icon":"AI图标_黑白","isCache":"0","isFrame":"1","menuId":2053,"menuName":"中州智询","menuType":"M","orderNum":1,"params":{},"parentId":0,"path":"ai","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',9,2,'/system/menu',668,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-10T17:04:09','com.zzyl.web.controller.system.SysMenuController.edit()','{"children":[],"component":"nursing/zhixun/index","createTime":"2025-09-25 22:00:50","icon":"AI图标","isCache":"0","isFrame":"1","menuId":2054,"menuName":"小智","menuType":"C","orderNum":0,"params":{},"parentId":2053,"path":"difyRag","perms":"","routeName":"","status":"0","updateBy":"admin","visible":"0"}','admin','院长办公室','PUT','菜单管理','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',11,2,'/system/menu',669,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-15T19:57:16','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','院长办公室','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',17,2,'/monitor/job/run',670,0);
+INSERT INTO `sys_oper_log`(`oper_time`,`method`,`oper_param`,`oper_name`,`dept_name`,`request_method`,`title`,`oper_location`,`operator_type`,`oper_ip`,`json_result`,`cost_time`,`business_type`,`oper_url`,`oper_id`,`status`) VALUES ('2025-10-15T19:58:14','com.zzyl.quartz.controller.SysJobController.run()','{"jobGroup":"DEFAULT","jobId":107,"misfirePolicy":"0","params":{}}','admin','院长办公室','PUT','定时任务','内网IP',1,'127.0.0.1','{"msg":"操作成功","code":200}',3026,2,'/monitor/job/run',671,0);
 
 ####################
 ##  sys_post
@@ -2929,18 +2973,18 @@ DROP TABLE IF EXISTS `sys_post`;
 ####################
 ##  table sys_post ddl
 ####################
-CREATE TABLE `sys_post` (
-  `post_id` bigint NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
-  `post_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位编码',
-  `post_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位名称',
-  `post_sort` int NOT NULL COMMENT '显示顺序',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '状态（0正常 1停用）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`post_id`) USING BTREE
+CREATE TABLE "sys_post" (
+  "post_id" bigint NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+  "post_code" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位编码',
+  "post_name" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '岗位名称',
+  "post_sort" int NOT NULL COMMENT '显示顺序',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '状态（0正常 1停用）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("post_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='岗位信息表';
 
 ####################
@@ -2963,22 +3007,22 @@ DROP TABLE IF EXISTS `sys_role`;
 ####################
 ##  table sys_role ddl
 ####################
-CREATE TABLE `sys_role` (
-  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
-  `role_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色名称',
-  `role_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色权限字符串',
-  `role_sort` int NOT NULL COMMENT '显示顺序',
-  `data_scope` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
-  `menu_check_strictly` tinyint(1) DEFAULT '1' COMMENT '菜单树选择项是否关联显示',
-  `dept_check_strictly` tinyint(1) DEFAULT '1' COMMENT '部门树选择项是否关联显示',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`role_id`) USING BTREE
+CREATE TABLE "sys_role" (
+  "role_id" bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  "role_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色名称',
+  "role_key" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色权限字符串',
+  "role_sort" int NOT NULL COMMENT '显示顺序',
+  "data_scope" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
+  "menu_check_strictly" tinyint(1) DEFAULT '1' COMMENT '菜单树选择项是否关联显示',
+  "dept_check_strictly" tinyint(1) DEFAULT '1' COMMENT '部门树选择项是否关联显示',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
+  "del_flag" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("role_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='角色信息表';
 
 ####################
@@ -3003,10 +3047,10 @@ DROP TABLE IF EXISTS `sys_role_dept`;
 ####################
 ##  table sys_role_dept ddl
 ####################
-CREATE TABLE `sys_role_dept` (
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  `dept_id` bigint NOT NULL COMMENT '部门ID',
-  PRIMARY KEY (`role_id`,`dept_id`) USING BTREE
+CREATE TABLE "sys_role_dept" (
+  "role_id" bigint NOT NULL COMMENT '角色ID',
+  "dept_id" bigint NOT NULL COMMENT '部门ID',
+  PRIMARY KEY ("role_id","dept_id") USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='角色和部门关联表';
 
 ####################
@@ -3028,10 +3072,10 @@ DROP TABLE IF EXISTS `sys_role_menu`;
 ####################
 ##  table sys_role_menu ddl
 ####################
-CREATE TABLE `sys_role_menu` (
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  `menu_id` bigint NOT NULL COMMENT '菜单ID',
-  PRIMARY KEY (`role_id`,`menu_id`) USING BTREE
+CREATE TABLE "sys_role_menu" (
+  "role_id" bigint NOT NULL COMMENT '角色ID',
+  "menu_id" bigint NOT NULL COMMENT '菜单ID',
+  PRIMARY KEY ("role_id","menu_id") USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='角色和菜单关联表';
 
 ####################
@@ -3447,27 +3491,27 @@ DROP TABLE IF EXISTS `sys_user`;
 ####################
 ##  table sys_user ddl
 ####################
-CREATE TABLE `sys_user` (
-  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `dept_id` bigint DEFAULT NULL COMMENT '部门ID',
-  `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户账号',
-  `nick_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户昵称',
-  `user_type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '00' COMMENT '用户类型（00系统用户）',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户邮箱',
-  `phonenumber` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '手机号码',
-  `sex` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '用户性别（0男 1女 2未知）',
-  `avatar` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '头像地址',
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '密码',
-  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '帐号状态（0正常 1停用）',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `login_ip` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '最后登录IP',
-  `login_date` datetime DEFAULT NULL COMMENT '最后登录时间',
-  `create_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`user_id`) USING BTREE
+CREATE TABLE "sys_user" (
+  "user_id" bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  "dept_id" bigint DEFAULT NULL COMMENT '部门ID',
+  "user_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户账号',
+  "nick_name" varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户昵称',
+  "user_type" varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '00' COMMENT '用户类型（00系统用户）',
+  "email" varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '用户邮箱',
+  "phonenumber" varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '手机号码',
+  "sex" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '用户性别（0男 1女 2未知）',
+  "avatar" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '头像地址',
+  "password" varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '密码',
+  "status" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '帐号状态（0正常 1停用）',
+  "del_flag" char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
+  "login_ip" varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '最后登录IP',
+  "login_date" datetime DEFAULT NULL COMMENT '最后登录时间',
+  "create_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '创建者',
+  "create_time" datetime DEFAULT NULL COMMENT '创建时间',
+  "update_by" varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '更新者',
+  "update_time" datetime DEFAULT NULL COMMENT '更新时间',
+  "remark" varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY ("user_id") USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
 
 ####################
@@ -3477,7 +3521,7 @@ CREATE TABLE `sys_user` (
 ####################
 ##  sys_user data
 ####################
-INSERT INTO `sys_user`(`del_flag`,`create_time`,`user_name`,`sex`,`phonenumber`,`login_date`,`remark`,`avatar`,`login_ip`,`create_by`,`password`,`update_time`,`user_type`,`user_id`,`nick_name`,`dept_id`,`update_by`,`email`,`status`) VALUES ('0','2024-08-14T02:48:23','admin','1','15888888888','2025-08-26T21:15:22','管理员','','127.0.0.1','admin','$2a$10$gKxX4sw3FMC.ojVS4KZbX.n4at9uWXQlHVMFHx3ZuqUQaowPwt6ei','2025-08-26T13:15:22','00',1,'若依',103,'','ry@163.com','0');
+INSERT INTO `sys_user`(`del_flag`,`create_time`,`user_name`,`sex`,`phonenumber`,`login_date`,`remark`,`avatar`,`login_ip`,`create_by`,`password`,`update_time`,`user_type`,`user_id`,`nick_name`,`dept_id`,`update_by`,`email`,`status`) VALUES ('0','2024-08-14T02:48:23','admin','1','15888888888','2025-10-16T10:57:39','管理员','','127.0.0.1','admin','$2a$10$gKxX4sw3FMC.ojVS4KZbX.n4at9uWXQlHVMFHx3ZuqUQaowPwt6ei','2025-10-16T10:57:38','00',1,'若依',103,'','ry@163.com','0');
 INSERT INTO `sys_user`(`del_flag`,`create_time`,`user_name`,`sex`,`phonenumber`,`login_date`,`remark`,`avatar`,`login_ip`,`create_by`,`password`,`user_type`,`user_id`,`nick_name`,`dept_id`,`update_by`,`email`,`status`) VALUES ('2','2024-08-14T02:48:23','ry','1','15666666666','2024-08-14T02:48:23','测试员','','127.0.0.1','admin','$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2','00',2,'若依',105,'','ry@qq.com','0');
 INSERT INTO `sys_user`(`del_flag`,`create_time`,`user_name`,`sex`,`phonenumber`,`login_date`,`avatar`,`login_ip`,`create_by`,`password`,`update_time`,`user_type`,`user_id`,`nick_name`,`update_by`,`email`,`status`) VALUES ('2','2025-04-25T15:19:35','zhangsan','0','','2025-04-25T23:22:31','','127.0.0.1','admin','$2a$10$IrKtv9RLiwi7BIKRY83Iyej0sH60IibESf5P5XJw4ZDDRJNxqAFX.','2025-04-25T15:22:29','00',100,'张三','','','0');
 INSERT INTO `sys_user`(`del_flag`,`create_time`,`user_name`,`sex`,`phonenumber`,`login_date`,`avatar`,`login_ip`,`create_by`,`password`,`update_time`,`user_type`,`user_id`,`nick_name`,`update_by`,`email`,`status`) VALUES ('2','2025-04-25T15:22:02','lisi','0','','2025-04-26T09:32:43','','127.0.0.1','admin','$2a$10$tNtPb/LNK8zib/YmKGPpWOgnelG3UbmMgabRk3LXBHEgWufIxVWi6','2025-04-26T01:32:42','00',101,'李四','admin','','0');
@@ -3494,10 +3538,10 @@ DROP TABLE IF EXISTS `sys_user_post`;
 ####################
 ##  table sys_user_post ddl
 ####################
-CREATE TABLE `sys_user_post` (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `post_id` bigint NOT NULL COMMENT '岗位ID',
-  PRIMARY KEY (`user_id`,`post_id`) USING BTREE
+CREATE TABLE "sys_user_post" (
+  "user_id" bigint NOT NULL COMMENT '用户ID',
+  "post_id" bigint NOT NULL COMMENT '岗位ID',
+  PRIMARY KEY ("user_id","post_id") USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户与岗位关联表';
 
 ####################
@@ -3517,10 +3561,10 @@ DROP TABLE IF EXISTS `sys_user_role`;
 ####################
 ##  table sys_user_role ddl
 ####################
-CREATE TABLE `sys_user_role` (
-  `user_id` bigint NOT NULL COMMENT '用户ID',
-  `role_id` bigint NOT NULL COMMENT '角色ID',
-  PRIMARY KEY (`user_id`,`role_id`) USING BTREE
+CREATE TABLE "sys_user_role" (
+  "user_id" bigint NOT NULL COMMENT '用户ID',
+  "role_id" bigint NOT NULL COMMENT '角色ID',
+  PRIMARY KEY ("user_id","role_id") USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户和角色关联表';
 
 ####################
@@ -3534,4 +3578,3 @@ INSERT INTO `sys_user_role`(`user_id`,`role_id`) VALUES (1,1);
 INSERT INTO `sys_user_role`(`user_id`,`role_id`) VALUES (103,102);
 INSERT INTO `sys_user_role`(`user_id`,`role_id`) VALUES (104,102);
 INSERT INTO `sys_user_role`(`user_id`,`role_id`) VALUES (105,103);
-
