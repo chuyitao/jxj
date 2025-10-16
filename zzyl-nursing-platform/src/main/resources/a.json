@@ -1,0 +1,64 @@
+{
+  "limit": 20,
+  "has_more": false,
+  "data": [
+    {
+      "id": "891d9da6-7d33-4499-8229-d05fb992591f",
+      "conversation_id": "44a162ac-3cce-4cae-9e4b-e6ddc758011c",
+      "parent_message_id": "00000000-0000-0000-0000-000000000000",
+      "inputs": {},
+      "query": "\u4f60\u597d",
+      "answer": "\u4f60\u597d\uff01\u6211\u662f\u4e00\u4e2a\u95ee\u7b54\u52a9\u624b\uff0c\u53ef\u4ee5\u901a\u8fc7\u77e5\u8bc6\u5e93\u6765\u56de\u7b54\u60a8\u7684\u95ee\u9898\u3002\u8bf7\u544a\u8bc9\u6211\u60a8\u60f3\u4e86\u89e3\u4ec0\u4e48\u5185\u5bb9\uff0c\u6211\u4f1a\u5c3d\u529b\u4e3a\u60a8\u63d0\u4f9b\u5e2e\u52a9\u3002",
+      "message_files": [],
+      "feedback": null,
+      "retriever_resources": [],
+      "created_at": 1760532110,
+      "agent_thoughts": [
+        {
+          "id": "fdea46ef-6332-4dc6-85e1-e54c2fe80252",
+          "chain_id": null,
+          "message_id": "891d9da6-7d33-4499-8229-d05fb992591f",
+          "position": 1,
+          "thought": "\u4f60\u597d\uff01\u6211\u662f\u4e00\u4e2a\u95ee\u7b54\u52a9\u624b\uff0c\u53ef\u4ee5\u901a\u8fc7\u77e5\u8bc6\u5e93\u6765\u56de\u7b54\u60a8\u7684\u95ee\u9898\u3002\u8bf7\u544a\u8bc9\u6211\u60a8\u60f3\u4e86\u89e3\u4ec0\u4e48\u5185\u5bb9\uff0c\u6211\u4f1a\u5c3d\u529b\u4e3a\u60a8\u63d0\u4f9b\u5e2e\u52a9\u3002",
+          "tool": "",
+          "tool_labels": {},
+          "tool_input": "",
+          "created_at": 1760532110,
+          "observation": "",
+          "files": []
+        }
+      ],
+      "status": "normal",
+      "error": null
+    },
+    {
+      "id": "97f207e6-1522-46f1-88cf-291e2a2ae9d1",
+      "conversation_id": "44a162ac-3cce-4cae-9e4b-e6ddc758011c",
+      "parent_message_id": "00000000-0000-0000-0000-000000000000",
+      "inputs": {},
+      "query": "\u4eca\u5929\u662f\u51e0\u53f7",
+      "answer": "",
+      "message_files": [],
+      "feedback": null,
+      "retriever_resources": [],
+      "created_at": 1760532781,
+      "agent_thoughts": [
+        {
+          "id": "b947218b-c560-4535-b0c6-c8a29017d1ac",
+          "chain_id": null,
+          "message_id": "97f207e6-1522-46f1-88cf-291e2a2ae9d1",
+          "position": 1,
+          "thought": "\u6211\u76ee\u524d\u65e0\u6cd5\u83b7\u53d6\u5f53\u524d\u7684\u65e5\u671f\u4fe1\u606f\u3002\u8981\u4e86\u89e3\u4eca\u5929\u7684\u51c6\u786e\u65e5\u671f\uff0c\u60a8\u53ef\u4ee5\u67e5\u770b\u60a8\u7684\u8bbe\u5907\u65e5\u5386\u3001\u624b\u673a\u6216\u7535\u8111\u4e0a\u7684\u65f6\u95f4\u663e\u793a\uff0c\u6216\u8005\u8be2\u95ee\u5176\u4ed6\u53ef\u4ee5\u8bbf\u95ee\u5b9e\u65f6\u4fe1\u606f\u7684\u52a9\u624b\u3002\n\n\u5982\u679c\u60a8\u6709\u5176\u4ed6\u5173\u4e8e\u77e5\u8bc6\u5e93\u5185\u5bb9\u7684\u95ee\u9898\uff0c\u6211\u5f88\u4e50\u610f\u4e3a\u60a8\u89e3\u7b54\uff01",
+          "tool": "",
+          "tool_labels": {},
+          "tool_input": "",
+          "created_at": 1760532780,
+          "observation": "",
+          "files": []
+        }
+      ],
+      "status": "normal",
+      "error": null
+    }
+  ]
+}
