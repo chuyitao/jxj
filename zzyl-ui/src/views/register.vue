@@ -1,7 +1,11 @@
 <template>
   <div class="register">
+    <div class="register-cover" aria-hidden="true">
+      <img src="@/assets/images/login-cover.png" alt="" class="cover-img" />
+    </div>
+    <div class="register-overlay" aria-hidden="true"></div>
     <el-form ref="registerRef" :model="registerForm" :rules="registerRules" class="register-form">
-      <h3 class="title">若依后台管理系统</h3>
+      <h3 class="title">静心栖 · 注册账号</h3>
       <el-form-item prop="username">
         <el-input 
           v-model="registerForm.username" 
@@ -70,7 +74,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-register-footer">
-      <span>Copyright © 2018-2023 ruoyi.vip All Rights Reserved.</span>
+      <span>Copyright © {{ new Date().getFullYear() }} 静心栖 All Rights Reserved.</span>
     </div>
   </div>
 </template>
@@ -155,34 +159,73 @@ getCode();
 
 <style lang='scss' scoped>
 .register {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-image: url("../assets/images/login-background.jpg");
-  background-size: cover;
+  overflow: hidden;
 }
+
+.register-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  .cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+.register-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
 .title {
-  margin: 0px auto 30px auto;
+  margin: 0 auto 28px;
   text-align: center;
-  color: #707070;
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FF9EC7, #2EC4B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .register-form {
-  border-radius: 6px;
-  background: #ffffff;
-  width: 400px;
-  padding: 25px 25px 5px 25px;
+  position: relative;
+  z-index: 2;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 24px 64px rgba(46, 196, 182, 0.12), 0 8px 32px rgba(255, 158, 199, 0.18);
+  width: 420px;
+  padding: 36px 36px 20px;
+
+  :deep(.el-button--primary) {
+    width: 100%;
+    height: 46px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #FF9EC7, #2EC4B6);
+    border: none;
+  }
+
   .el-input {
-    height: 40px;
-    input {
-      height: 40px;
-    }
+    height: 44px;
+    input { height: 44px; border-radius: 12px; }
   }
   .input-icon {
-    height: 39px;
+    height: 42px;
     width: 14px;
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 .register-tip {
@@ -206,8 +249,8 @@ getCode();
   bottom: 0;
   width: 100%;
   text-align: center;
-  color: #fff;
-  font-family: Arial;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 4px rgba(26, 58, 74, 0.3);
   font-size: 12px;
   letter-spacing: 1px;
 }

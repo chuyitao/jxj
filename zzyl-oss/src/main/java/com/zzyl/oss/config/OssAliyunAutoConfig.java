@@ -23,22 +23,22 @@ public class OssAliyunAutoConfig {
         log.info("-----------------开始创建OSSClient--------------------");
         OSS ossClient = new OSSClientBuilder().build(aliOssConfigProperties.getEndpoint(),
                 aliOssConfigProperties.getAccessKeyId(), aliOssConfigProperties.getAccessKeySecret());
-        //判断容器是否存在,不存在就创建
-        if (!ossClient.doesBucketExist(aliOssConfigProperties.getBucketName())) {
-            ossClient.createBucket(aliOssConfigProperties.getBucketName());
-            CreateBucketRequest createBucketRequest = new CreateBucketRequest(aliOssConfigProperties.getBucketName());
-            //设置问公共可读
-            createBucketRequest.setCannedACL(CannedAccessControlList.PublicRead);
-            ossClient.createBucket(createBucketRequest);
-        }
+        String bucketName = aliOssConfigProperties.getBucketName();
+        try {
+            if (!ossClient.doesBucketExist(bucketName)) {
+                ossClient.createBucket(bucketName);
+                CreateBucketRequest createBucketRequest = new CreateBucketRequest(bucketName);
+                createBucketRequest.setCannedACL(CannedAccessControlList.PublicRead);
+                ossClient.createBucket(createBucketRequest);
+            }
 
-        //添加客户端访问日志
-        SetBucketLoggingRequest request = new SetBucketLoggingRequest(aliOssConfigProperties.getBucketName());
-        // 设置存放日志文件的存储空间。
-        request.setTargetBucket(aliOssConfigProperties.getBucketName());
-        // 设置日志文件存放的目录。
-        request.setTargetPrefix(aliOssConfigProperties.getBucketName());
-        ossClient.setBucketLogging(request);
+            SetBucketLoggingRequest request = new SetBucketLoggingRequest(bucketName);
+            request.setTargetBucket(bucketName);
+            request.setTargetPrefix(bucketName);
+            ossClient.setBucketLogging(request);
+        } catch (Exception e) {
+            log.warn("OSS 初始化非关键步骤失败，不影响启动: {}", e.getMessage());
+        }
 
         log.info("-----------------结束创建OSSClient--------------------");
         return ossClient;

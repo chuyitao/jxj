@@ -1,7 +1,7 @@
 # 项目相关配置
 ruoyi:
   # 名称
-  name: RuoYi
+  name: 静心栖
   # 版本
   version: 3.8.8
   # 版权年份
@@ -199,5 +199,5 @@ deepseek:
   model: deepseek-chat
 wechat:
   appid: wxa54e0997e8b6649e
-  secret: 9e4b693aa8cee71a9077e15dcac30b52
+  secret: ${WECHAT_SECRET}
 nursingId: 201

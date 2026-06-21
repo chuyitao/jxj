@@ -91,6 +91,20 @@
   display: none;
 }
 
+.el-button--primary {
+  --el-button-bg-color: #2EC4B6;
+  --el-button-border-color: #2EC4B6;
+  --el-button-hover-bg-color: #26B5A8;
+  --el-button-hover-border-color: #26B5A8;
+  --el-button-active-bg-color: #1FA89C;
+  --el-button-active-border-color: #1FA89C;
+}
+
+.el-menu-item.is-active {
+  color: #FFB7D5 !important;
+  background: linear-gradient(90deg, rgba(255, 158, 199, 0.2), rgba(46, 196, 182, 0.12)) !important;
+}
+
 .el-dropdown .el-dropdown-link{
   color: var(--el-color-primary) !important;
 }

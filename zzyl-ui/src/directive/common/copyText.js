@@ -1,6 +1,6 @@
 /**
 * v-copyText 复制文本内容
-* Copyright (c) 2022 ruoyi
+* 静心栖管理系统
 */
 
 export default {

@@ -61,4 +61,12 @@ public interface IHealthAssessmentService extends IService<HealthAssessment>
      * @return 结果
      */
     public int deleteHealthAssessmentById(Long id);
+
+    /**
+     * 根据老人姓名或ID查询健康信息（Dify）
+     *
+     * @param nameOrId 老人姓名或ID
+     * @return JSON 字符串
+     */
+    String getElderHealthInfo(String nameOrId);
 }

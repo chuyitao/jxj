@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -14,6 +15,7 @@ import com.zzyl.common.utils.StringUtils;
 import com.zzyl.common.utils.deepseek.ChatClient;
 import com.zzyl.framework.config.properties.DeepseekProperties;
 import com.zzyl.nursing.domain.HealthAssessmentDetail;
+import com.zzyl.nursing.domain.Elder;
 import com.zzyl.nursing.dto.HealthAssessmentDto;
 import com.zzyl.nursing.mapper.HealthAssessmentDetailMapper;
 import com.zzyl.nursing.vo.HealthAssessmentVo;
@@ -25,6 +27,8 @@ import org.springframework.stereotype.Service;
 import com.zzyl.nursing.mapper.HealthAssessmentMapper;
 import com.zzyl.nursing.domain.HealthAssessment;
 import com.zzyl.nursing.service.IHealthAssessmentService;
+import com.zzyl.nursing.service.IElderService;
+import com.zzyl.nursing.vo.ElderHealthInfoVO;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +44,9 @@ import java.util.Arrays;
 public class HealthAssessmentServiceImpl extends ServiceImpl<HealthAssessmentMapper, HealthAssessment> implements IHealthAssessmentService {
     @Autowired
     private HealthAssessmentMapper healthAssessmentMapper;
+
+    @Autowired
+    private IElderService elderService;
 
     /**
      * 查询健康评估
@@ -285,6 +292,54 @@ public class HealthAssessmentServiceImpl extends ServiceImpl<HealthAssessmentMap
     @Override
     public int deleteHealthAssessmentById(Long id) {
         return removeById(id) ? 1 : 0;
+    }
+
+    @Override
+    public String getElderHealthInfo(String nameOrId) {
+        if (StringUtils.isEmpty(nameOrId)) {
+            return null;
+        }
+
+        Elder elder = elderService.findElderByNameOrId(nameOrId);
+        if (ObjectUtil.isEmpty(elder)) {
+            return null;
+        }
+
+        HealthAssessment healthAssessment = findLatestHealthAssessment(elder);
+        if (ObjectUtil.isEmpty(healthAssessment)) {
+            return null;
+        }
+
+        HealthAssessmentDetail detail = healthAssessmentDetailMapper.selectOne(
+                Wrappers.<HealthAssessmentDetail>lambdaQuery()
+                        .eq(HealthAssessmentDetail::getHealthAssessmentId, healthAssessment.getId())
+                        .last("limit 1"));
+
+        ElderHealthInfoVO vo = new ElderHealthInfoVO();
+        vo.setName(healthAssessment.getElderName());
+        vo.setHealthScore(healthAssessment.getHealthScore());
+        if (ObjectUtil.isNotEmpty(detail)) {
+            vo.setRiskLevel(detail.getRiskLevel());
+            vo.setReportSummary(detail.getReportSummary());
+        }
+        return JSONUtil.toJsonStr(vo);
+    }
+
+    private HealthAssessment findLatestHealthAssessment(Elder elder) {
+        HealthAssessment healthAssessment = null;
+        if (StringUtils.isNotEmpty(elder.getIdCardNo())) {
+            healthAssessment = getOne(Wrappers.<HealthAssessment>lambdaQuery()
+                    .eq(HealthAssessment::getIdCard, elder.getIdCardNo())
+                    .orderByDesc(HealthAssessment::getAssessmentTime)
+                    .last("limit 1"));
+        }
+        if (ObjectUtil.isEmpty(healthAssessment) && StringUtils.isNotEmpty(elder.getName())) {
+            healthAssessment = getOne(Wrappers.<HealthAssessment>lambdaQuery()
+                    .eq(HealthAssessment::getElderName, elder.getName())
+                    .orderByDesc(HealthAssessment::getAssessmentTime)
+                    .last("limit 1"));
+        }
+        return healthAssessment;
     }
 
 }

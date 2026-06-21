@@ -1,5 +1,7 @@
 package com.zzyl.nursing.controller;
 
+import com.zzyl.nursing.service.IElderService;
+import com.zzyl.nursing.service.IHealthAssessmentService;
 import com.zzyl.nursing.service.IReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,12 @@ public class DifyServeController {
     @Autowired
     private IReservationService reservationService;
 
+    @Autowired
+    private IElderService elderService;
+
+    @Autowired
+    private IHealthAssessmentService healthAssessmentService;
+
     @GetMapping("/getReservationByToday")
     public String getReservationByDay(String datetime){
         System.out.println(datetime);
@@ -27,6 +35,28 @@ public class DifyServeController {
 
         return reservationService.getReservationByDay(dateTime);
 
+    }
+
+    /**
+     * 查询老人基本信息
+     *
+     * @param nameOrId 老人姓名或ID
+     */
+    @GetMapping("/elder/basic-info")
+    public String getElderBasicInfo(String nameOrId)
+    {
+        return elderService.getElderBasicInfo(nameOrId);
+    }
+
+    /**
+     * 查询老人健康信息
+     *
+     * @param nameOrId 老人姓名或ID
+     */
+    @GetMapping("/elder/health-info")
+    public String getElderHealthInfo(String nameOrId)
+    {
+        return healthAssessmentService.getElderHealthInfo(nameOrId);
     }
 
 }

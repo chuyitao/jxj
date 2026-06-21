@@ -1,13 +1,12 @@
 <template>
-  <div class="sidebar-logo-container" :class="{ 'collapse': collapse }" :style="{ backgroundColor: sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackground }">
+  <div class="sidebar-logo-container" :class="{ 'collapse': collapse }" :style="{ background: sideTheme === 'theme-dark' ? 'linear-gradient(135deg, #243B4A 0%, #1A3A4A 100%)' : variables.menuLightBackground }">
     <transition name="sidebarLogoFade">
       <router-link v-if="collapse" key="collapse" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 v-else class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">{{ title }}</h1>
+        <img :src="logo" class="sidebar-logo" alt="静心栖" />
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo" />
-        <h1 class="sidebar-title" :style="{ color: sideTheme === 'theme-dark' ? variables.logoTitleColor : variables.logoLightTitleColor }">{{ title }}</h1>
+        <img :src="logo" class="sidebar-logo" alt="静心栖" />
+        <span class="sidebar-title">{{ title }}</span>
       </router-link>
     </transition>
   </div>
@@ -15,7 +14,7 @@
 
 <script setup>
 import variables from '@/assets/styles/variables.module.scss'
-import logo from '@/assets/logo/logo.png'
+import logo from '@/assets/logo/logo.svg'
 import useSettingsStore from '@/store/modules/settings'
 
 defineProps({
@@ -44,37 +43,46 @@ const sideTheme = computed(() => settingsStore.sideTheme);
   position: relative;
   width: 100%;
   height: 50px;
-  line-height: 50px;
-  background: #2b2f3a;
-  text-align: center;
   overflow: hidden;
 
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 12px;
+    text-decoration: none;
 
     & .sidebar-logo {
+      display: block;
       width: 32px;
       height: 32px;
-      vertical-align: middle;
-      margin-right: 12px;
+      flex-shrink: 0;
+      border-radius: 8px;
     }
 
     & .sidebar-title {
-      display: inline-block;
       margin: 0;
-      color: #fff;
-      font-weight: 600;
-      line-height: 50px;
-      font-size: 14px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
-      vertical-align: middle;
+      padding: 0;
+      line-height: 1;
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      letter-spacing: 3px;
+      white-space: nowrap;
+      background: linear-gradient(90deg, #FFB7D5, #2EC4B6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   }
 
   &.collapse {
-    .sidebar-logo {
-      margin-right: 0px;
+    .sidebar-logo-link {
+      padding: 0;
+      justify-content: center;
     }
   }
 }

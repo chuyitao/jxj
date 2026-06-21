@@ -12,7 +12,7 @@ pipeline {
         stage('拉取Git代码') {
             steps {
                 echo "正在拉取代码..."
-                echo "当前分支:${GIT_TAG},当前服务:ruoyi-vue"
+                echo "当前分支:${GIT_TAG},当前服务:jxj-vue"
                 checkout([$class: 'GitSCM',
                           branches: [[name: GIT_TAG]],
                           doGenerateSubmoduleConfigurations: false,
@@ -28,7 +28,7 @@ pipeline {
                 echo "当前打镜像tag:${DOCKER_TAG}"
                 script {
                     sh "pwd"
-                    sh "docker build -t zzyl-vue:${DOCKER_TAG} -f ./Dockerfile ."
+                    sh "docker build -t jxj-vue:${DOCKER_TAG} -f ./Dockerfile ."
                 }
             }
         }
@@ -37,8 +37,8 @@ pipeline {
                 script {
                     sh "pwd"
                     sh "cd `pwd`"
-                    echo "部署升级:zzyl-vue前端服务"
-                    sh "chmod +x ./deploy.sh && sh ./deploy.sh zzyl-vue ${DOCKER_TAG}"
+                    echo "部署升级:jxj-vue前端服务"
+                    sh "chmod +x ./deploy.sh && sh ./deploy.sh jxj-vue ${DOCKER_TAG}"
                 }
             }
         }

@@ -1,6 +1,6 @@
  /**
  * v-hasPermi 操作权限处理
- * Copyright (c) 2019 ruoyi
+ * 静心栖管理系统
  */
  
 import useUserStore from '@/store/modules/user'

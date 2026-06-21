@@ -1,0 +1,8 @@
+# 复制为 application-dev-local.yml 并填写本地密钥（该文件已被 git 忽略）
+oss:
+  accessKeyId: your-oss-access-key-id
+  accessKeySecret: your-oss-access-key-secret
+deepseek:
+  apiKey: your-deepseek-api-key
+wechat:
+  secret: your-wechat-secret

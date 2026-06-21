@@ -4,7 +4,21 @@
 @import './element-ui.scss';
 @import './sidebar.scss';
 @import './btn.scss';
-@import './ruoyi.scss';
+@import './jxj.scss';
+
+:root {
+  --el-color-primary: #2EC4B6;
+  --el-color-primary-light-3: #5EDDD4;
+  --el-color-primary-light-5: #8EE8E2;
+  --el-color-primary-light-7: #B8F0EB;
+  --el-color-primary-light-8: #D4F7F4;
+  --el-color-primary-light-9: #EDFCFA;
+  --el-color-primary-dark-2: #26B5A8;
+  --jxj-accent: #FF9EC7;
+  --jxj-pink: #FFB7D5;
+  --jxj-teal: #2EC4B6;
+  --jxj-gradient: linear-gradient(135deg, #FF9EC7 0%, #2EC4B6 100%);
+}
 
 body {
   height: 100%;

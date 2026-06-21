@@ -59,4 +59,20 @@ public interface IElderService extends IService<Elder>
      * @return 结果
      */
     public int deleteElderById(Long id);
+
+    /**
+     * 根据老人姓名或ID查询基本信息（Dify）
+     *
+     * @param nameOrId 老人姓名或ID
+     * @return JSON 字符串
+     */
+    String getElderBasicInfo(String nameOrId);
+
+    /**
+     * 根据老人姓名或ID查找老人
+     *
+     * @param nameOrId 老人姓名或ID
+     * @return 老人信息
+     */
+    Elder findElderByNameOrId(String nameOrId);
 }

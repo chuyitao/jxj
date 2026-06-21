@@ -41,7 +41,7 @@ node_modules/*
 # Others
 *.log
 *.xml.versionsBackup
-*.swp
+application-dev-local.yml
 
 !*/build/*.java
 !*/build/*.html
