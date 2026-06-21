@@ -17,7 +17,7 @@ public class OSSTest {
     @Test
     public void test() throws FileNotFoundException {
         //读取一个文件
-        FileInputStream in = new FileInputStream("D:\\授课\\昌平428\\中州养老\\day04-智能评估\\资料\\体检报告-张芳-女-72岁.pdf");
+        FileInputStream in = new FileInputStream("src/test/resources/sample-report.pdf");
         //上传文件
         String url = fileStorageService.store("123.pdf", in);
         System.out.println(url);

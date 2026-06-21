@@ -37,7 +37,7 @@ public class DeepseekTest {
     public static String prompt = """
             请以一个专业医生的视角来分析这份体检报告，报告中包含了一些异常数据，我需要您对这些数据进行解读，并给出相应的健康建议。
             体检内容如下：
-            中州健康体检中心\s
+            静心栖健康体检中心\s
             \s
             体\s
             检\s

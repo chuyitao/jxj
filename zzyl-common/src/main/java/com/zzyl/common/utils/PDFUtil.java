@@ -40,7 +40,7 @@ public class PDFUtil {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        FileInputStream in = new FileInputStream("D:\\授课\\昌平428\\中州养老\\day04-智能评估\\资料\\体检报告-张芳-女-72岁.pdf");
+        FileInputStream in = new FileInputStream("src/test/resources/sample-report.pdf");
         String result = pdfToString(in);
         System.out.println(result);
     }
